@@ -7,35 +7,27 @@
 /* find out more about jslint: http://www.jslint.com/help.html */
 
 "use strict";  // Operate in Strict mode such that variables must be declared before used!
-var kWASDDelta = 0.8;
+var kWASDDelta = 0.3;
 
 function WASDObj() {
 }
 gEngine.Core.inheritPrototype(WASDObj, GameObject);
 
-WASDObj.prototype.keyControl = function () {
-    var xform = this.getXform();
-    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.W)) {
-        xform.incYPosBy(kWASDDelta);
-    }
-    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.S)) {
-        xform.incYPosBy(-kWASDDelta);
-    }
-    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.A)) {
-        xform.incXPosBy(-kWASDDelta);
-    }
-    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.D)) {
-        xform.incXPosBy(kWASDDelta);
-    }
-    
-//    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.Z)) {
-//        xform.incRotationByDegree(1);
+//WASDObj.prototype.keyControl = function () {
+//    var xform = this.getXform();
+//    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.W)) {
+//        xform.incYPosBy(0.2);
 //    }
-//    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.X)) {
-//        xform.incRotationByDegree(-1);
+//    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.S)) {
+//        xform.incYPosBy(-kWASDDelta);
 //    }
-    
-    this.getRigidBody().userSetsState();
-    
-    
-};
+//    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.A)) {
+//        xform.incXPosBy(-kWASDDelta);
+//    }
+//    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.D)) {
+//        xform.incXPosBy(kWASDDelta);
+//    }
+//    
+//    this.getRigidBody().userSetsState();
+//
+//};

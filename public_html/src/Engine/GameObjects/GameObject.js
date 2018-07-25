@@ -83,7 +83,7 @@ GameObject.prototype.getRigidBody = function () { return this.mRigidBody; };
 GameObject.prototype.toggleDrawRenderable = function() { 
     this.mDrawRenderable = true };
 GameObject.prototype.toggleDrawRigidShape = function() { 
-    this.mDrawRigidShape = !this.mDrawRigidShape; };
+    this.mDrawRigidShape = false; };
 
 GameObject.prototype.update = function () {
     // simple default behavior

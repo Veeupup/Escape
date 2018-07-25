@@ -92,8 +92,11 @@
         <script type="text/javascript" src="src/Engine/RigidShapes/RigidRectangleCircle_Collision.js"></script>
         <script type="text/javascript" src="src/Engine/RigidShapes/RigidRectangle_Collision.js"></script>
         <!-- Client game code -->
+        <script type="text/javascript" src="src/MyGame/Start.js"></script>
         <script type="text/javascript" src="src/MyGame/MyGame.js"></script>
+        <script type="text/javascript" src="src/MyGame/MyGame2.js"></script>
         <script type="text/javascript" src="src/MyGame/MyGame_Bounds.js"></script>
+        <script type="text/javascript" src="src/MyGame/MyGame2_Bounds.js"></script>
         <script type="text/javascript" src="src/MyGame/Objects/WASDObj.js"></script>
         <script type="text/javascript" src="src/MyGame/Objects/Hero.js"></script>
         <script type="text/javascript" src="src/MyGame/Objects/Minion.js"></script>
@@ -103,8 +106,8 @@
     </head>
 
     <body onload="
-        var myGame = new MyGame();
-        gEngine.Core.initializeEngineCore('GLCanvas', myGame);
+        var dyeGame = new Start();
+        gEngine.Core.initializeEngineCore('GLCanvas', dyeGame);
      ">
         <div id="LoadingIconParent" style="width: 1024px; height:484px;">
             <canvas id="GLCanvas" style="background-image: url('assets/back.png')">
@@ -119,34 +122,19 @@
                 <b>Behavior Controls:</b>
                 <ul>
                     <li>
-                        <b>P</b>: Penetration resolution on/off </li>
+                        <b>W</b>: Jump 
                     <li>
-                        <b>V</b>: Motion on/off </li>
+                        <b>A</b>: Move Left
                     <li>
-                        <b>H</b>: Inject random velocity to all objects </li>
+                        <b>D</b>: Move Right 
                     <li>
-                        <b>G</b>: Create new Rectangle/Circle (randomly)</li>
+                        <b>Q</b>: Use Your Item/Skill 
                     <li>
-                        <b>WASD</b>: Move selected object </li>
-                    <li>
-                        <b>Left/Right</b>: Sequence through selected object </li>
-                    <li>
-                        <b>Up/Down + MRF</b>: Increase/Decrease Mass/Restitution/Friction</li>
+                        <b>Space</b>: Interact with Items 
                 </ul>
+
             </div>
             
-            <div style="float: left">
-                <b>Drawing Controls:</b>
-                <ul>
-                    <li>
-                        <b>T</b>:Texture&nbsp; </li>
-                    <li>
-                        <b>B</b>:Primitive Bounds&nbsp; </li>
-                    <li>
-                        <b>R</b>:RigidShape&nbsp;  </li>
-                </ul>
-                <b>C</b>: Generate particles at the mouse position.
-            </div>
         </div>
     </body>
 </html>

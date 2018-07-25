@@ -10,15 +10,23 @@
 /* find out more about jslint: http://www.jslint.com/help.html */
 
 "use strict";  // Operate in Strict mode such that variables must be declared before used!
-
 function Hero(spriteTexture) {
     this.kDelta = 0.3;
-
+    this.xdminnow=3;
+    this.xdmaxnow=17;
+    this.ydminnow=128-64;
+    this.ydmaxnow=128-42;
+    this.xaminnow=3;
+    this.xamaxnow=17;
+    this.yaminnow=0;
+    this.yamaxnow=128-106;
+    this.dflag=0;
+    this.aflag=0;
     this.mDye = new SpriteRenderable(spriteTexture);
     this.mDye.setColor([1, 1, 1, 0]);
-    this.mDye.getXform().setPosition(-20, 10);
-    this.mDye.getXform().setSize(8, 5);
-    this.mDye.setElementPixelPositions(0, 120, 0, 180);
+    this.mDye.getXform().setPosition(0, 10);
+    this.mDye.getXform().setSize(5, 8);
+    this.mDye.setElementPixelPositions(22,38,128-98,128-72);
     GameObject.call(this, this.mDye);
     
     var r = new RigidRectangle(this.getXform(), 5, 8);
@@ -69,6 +77,42 @@ Hero.prototype.update = function () {
         }
     }
     
+    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.D)) {
+        if(this.dflag===0)
+        {
+            this.mDye.setElementPixelPositions(this.xdminnow,this.xdmaxnow,this.ydminnow,this.ydmaxnow);
+            this.xdminnow+=22;
+            this.xdmaxnow+=22;
+            if(this.xdminnow>64)
+            {
+                this.xdminnow=3;
+            }
+            if(this.xdmaxnow>64)
+            {
+                this.xdmaxnow=17;
+            }
+        }
+        this.dflag++;
+        if(this.dflag===8){
+            this.dflag=0;
+        }
+    }
+    if (gEngine.Input.isKeyPressed(gEngine.Input.keys.A)) {
+        if(this.aflag===0){
+        this.mDye.setElementPixelPositions(this.xaminnow,this.xamaxnow,this.yaminnow,this.yamaxnow);
+        this.xaminnow+=22;
+        this.xamaxnow+=22;
+        if(this.xaminnow>64){
+            this.xaminnow=3;
+        }
+        if(this.xamaxnow>64){
+            this.xamaxnow=17;
+        }
+        }
+        this.aflag++;
+        if(this.aflag===8){
+            this.aflag=0;
+        }
+    }
 
 };
-

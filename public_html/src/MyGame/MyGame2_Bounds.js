@@ -1,17 +1,17 @@
 /*
- * File: MyGame.js 
+ * File: MyGame2.js 
  * This is the logic of our game. 
  */
 
 /*jslint node: true, vars: true */
 /*global gEngine, Scene, GameObjectset, TextureObject, Camera, vec2,
   FontRenderable, SpriteRenderable, LineRenderable,
-  GameObject, MyGame */
+  GameObject, MyGame2 */
 /* find out more about jslint: http://www.jslint.com/help.html */
 
 "use strict";  // Operate in Strict mode such that variables must be declared before used!
 var kSpeed = 40;
-MyGame.prototype.radomizeVelocity = function()
+MyGame2.prototype.radomizeVelocity = function()
 {
     var i = 0;
     for (i = this.mFirstObject; i<this.mAllObjs.size(); i++) {
@@ -23,7 +23,7 @@ MyGame.prototype.radomizeVelocity = function()
     }
 };
 
-MyGame.prototype.createBounds = function() {
+MyGame2.prototype.createBounds = function() {
     var x = 15, w = 30, y = 0;
     for (x = -50; x < 240; x+=30) 
         this.platformAt(x, y, w, 0);
@@ -62,7 +62,7 @@ MyGame.prototype.createBounds = function() {
     xf.setSize(3, 3);
 };
 
-MyGame.prototype.wallAt = function (x, y, w) {
+MyGame2.prototype.wallAt = function (x, y, w) {
     var h = w * 4;
     var p = new TextureRenderable(this.kWallTexture);
     var xf = p.getXform();
@@ -79,7 +79,7 @@ MyGame.prototype.wallAt = function (x, y, w) {
     this.mAllObjs.addToSet(g);
 };
 
-MyGame.prototype.platformAt = function (x, y, w, rot, h) {
+MyGame2.prototype.platformAt = function (x, y, w, rot, h) {
     //var h = w / 8;
     if(h == null) h = w / 8;
     var p = new TextureRenderable(this.kPlatformTexture);
@@ -98,7 +98,7 @@ MyGame.prototype.platformAt = function (x, y, w, rot, h) {
     this.mAllObjs.addToSet(g);
 };
 
-MyGame.prototype.createBounds2 = function() {
+MyGame2.prototype.createBounds2 = function() {
     var x = 15, w = 30, y = -5;
     for (x = -50; x < 240; x+=30) 
         this.platformAt(x, y, w, 0);
@@ -140,10 +140,4 @@ MyGame.prototype.createBounds2 = function() {
     xf.setSize(3, 3);
 };
 
-MyGame.prototype.createElevator = function(){
-    this.platformAt(55 , 2, 9, 0, 1);
-    this.platformAt(-15, 22, 9, 0, 1);
-    this.platformAt(115, 22, 9, 0, 1);
-    this.platformAt(75, 42, 9, 0, 1);
-};
     

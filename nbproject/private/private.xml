@@ -4,11 +4,29 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="GameTopics"/>
         <group name="BookChapters">
-            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/Renderables/SpriteRenderable.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/GameObjects/GameObjectSet.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/Utils/Transform.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/Renderables/SpriteRenderable_PixelCollision.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/assets/minion_sprite.png</file>
             <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/MyGame/Objects/WASDObj.js</file>
-            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/index.html</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/RigidShapes/RigidRectangle.js</file>
             <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/MyGame/Objects/Hero.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/RigidShapes/RigidShape.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/MyGame/MyGame_Bounds.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/Core/Engine_GameLoop.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/Renderables/FontRenderable.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/MyGame/MyGame2_Bounds.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/Core/Engine_Physics.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/GameObjects/GameObject.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/Renderables/SpriteRenderable.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/assets/minion.png</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/Renderables/Renderable.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/index.html</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/MyGame/MyGame2.js</file>
             <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/MyGame/MyGame.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/Shaders/SpriteShader.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/MyGame/Objects/Minion.js</file>
+            <file>file:/D:/大二下/NUS/2DVideoGame/build-your-own-2d-game-engine/V2-EngineWithPhysics+Particles/DemoWithPhysicsParticle/public_html/src/Engine/Core/Resources/Engine_DefaultResources.js</file>
         </group>
     </open-files>
 </project-private>
