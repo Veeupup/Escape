@@ -90,6 +90,10 @@ GameObjectSet.prototype.update = function () {
 GameObjectSet.prototype.draw = function (aCamera) {
     var i;
     for (i = 0; i < this.mSet.length; i++) {
-        this.mSet[i].draw(aCamera);
+        try{
+            this.mSet[i].draw(aCamera);
+        }catch(err){
+            console.log(i);
+        };   
     }
 };

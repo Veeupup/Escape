@@ -108,16 +108,19 @@
     <body onload="
         var dyeGame = new Start();
         gEngine.Core.initializeEngineCore('GLCanvas', dyeGame);
-     ">
-        <div id="LoadingIconParent" style="width: 1024px; height:484px;">
-            <canvas id="GLCanvas" style="background-image: url('assets/back.png')">
+     " style="background-image: url('assets/index_back.jpg')">
+        <div>
+            <h1 style="text-align: center;color: #ffffff;">ESCAPE</h1>
+        </div>
+        <div id="LoadingIconParent" style="width: 1024px; height:484px;margin: auto;margin-top: 60px;">
+            <canvas id="GLCanvas" style="background: #000000;">
                 <!-- GLCanvas is the area we will draw in: a 640x480 area. -->
                 Your browser does not support the HTML5 canvas.
                 <!-- this message will show only if WebGL clearing failed -->
             </canvas>
             <script type="text/javascript"> gEngine.LoadingIconConfig.setup(); </script>
         </div>
-        <div style="display: table" >
+        <div style="display: table; margin: auto;" >
             <div style="float: left; padding-left: 10px">
                 <b>Behavior Controls:</b>
                 <ul>
@@ -134,7 +137,17 @@
                 </ul>
 
             </div>
-            
+            <div style="float: left; padding-left: 10px">
+                <b>Using Items/Skills:</b>
+                <ul>
+                    <li>
+                        <b>k</b>: Put Trap
+                    <li>
+                        <b>l</b>: Shot Gun
+                    
+                </ul>                     
+            </div>
+
         </div>
     </body>
 </html>

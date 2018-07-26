@@ -11,7 +11,7 @@ var kMinionWidth = 5;
 var kMinionHeight = 6;
 //胜利ar kMinionRandomSize = 5;
 
-function Minion(spriteTexture, atX, atY, boundX, boundX1) {
+function Minion(spriteTexture, atX, atY, boundX, boundX1, light) {
 
     var w = kMinionWidth ;
     var h = kMinionHeight ;
@@ -19,19 +19,19 @@ function Minion(spriteTexture, atX, atY, boundX, boundX1) {
     this.bx = boundX;
     this.bx1 = boundX1;
     this.direction = 1;//true is direction right
-    this.kDelta=0.05;
-    this.mMinion = new SpriteAnimateRenderable(spriteTexture);
+    this.kDelta=0.1;
+    this.mMinion = new LightRenderable(spriteTexture);
     this.mMinion.setColor([1, 1, 1, 0]);
     this.mMinion.getXform().setPosition(atX, atY);
     this.mMinion.getXform().setSize(w, h);
-    this.mMinion.setSpriteSequence(85,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
-        19, 21,   // widthxheight in pixels
+    this.mMinion.setSpriteSequence(118,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
+        42, 53,   // widthxheight in pixels
         3,          // number of elements in this sequence
-        3);         // horizontal padding in between
+        2);         // horizontal padding in between
     this.mMinion.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
     this.mMinion.setAnimationSpeed(30);
     // show each element for mAnimSpeed updates
-
+    this.mMinion.addLight(light);
     GameObject.call(this, this.mMinion);
 
     var r;
@@ -55,47 +55,47 @@ Minion.prototype.update = function (aCamera) {
                 if(xform.getXPos()>=this.bx1)
                 {
                     this.direction = -1;
-        this.mMinion.setSpriteSequence(21,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
-            16,21 ,   // widthxheight in pixels
+        this.mMinion.setSpriteSequence(185,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
+            42,53 ,   // widthxheight in pixels
             3,          // number of elements in this sequence
-            5);         // horizontal padding in between
+            2);         // horizontal padding in between
         this.mMinion.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
         this.mMinion.setAnimationSpeed(30);
-        this.kDelta=0.05;
+        this.kDelta=0.1;
                     }
                 else if(xform.getXPos()<=this.bx){
                     this.direction = 1;
-        this.mMinion.setSpriteSequence(85,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
-            19, 21,   // widthxheight in pixels
-            3,          // number of elements in this sequence
-            3);         // horizontal padding in between
+                    this.mMinion.setSpriteSequence(118,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
+                        42, 53,   // widthxheight in pixels
+                        3,          // number of elements in this sequence
+                        2);         // horizontal padding in between
         this.mMinion.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
         this.mMinion.setAnimationSpeed(30);
-        this.kDelta=0.05;
+        this.kDelta=0.1;
                 }
                 break;
             case -1:
             {
                 this.direction = -1;
-        this.mMinion.setSpriteSequence(21,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
-            16,21 ,   // widthxheight in pixels
+        this.mMinion.setSpriteSequence(185,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
+            42,53 ,   // widthxheight in pixels
             3,          // number of elements in this sequence
-            5);         // horizontal padding in between
+            2);         // horizontal padding in between
         this.mMinion.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
         this.mMinion.setAnimationSpeed(30);
-        this.kDelta=0.15;
+        this.kDelta=0.2;
                 break;
             }
             case 1:
             {
                 this.direction = 1;
-        this.mMinion.setSpriteSequence(85,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
-            19, 21,   // widthxheight in pixels
-            3,          // number of elements in this sequence
-            3);         // horizontal padding in between
+                this.mMinion.setSpriteSequence(118,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
+                    42, 53,   // widthxheight in pixels
+                    3,          // number of elements in this sequence
+                    2);         // horizontal padding in between
         this.mMinion.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
         this.mMinion.setAnimationSpeed(30);
-        this.kDelta=0.15;
+        this.kDelta=0.2;
                 break;
             }
             }

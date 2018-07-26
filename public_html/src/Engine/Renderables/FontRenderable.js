@@ -18,7 +18,7 @@
  */
 function FontRenderable(aString) {
     this.mFont = gEngine.DefaultResources.getDefaultFont();
-    this.mOneChar = new SpriteRenderable(this.mFont + ".png");
+    this.mOneChar = new LightRenderable(this.mFont + ".png");
     this.mXform = new Transform(); // transform that moves this object around
     this.mText = aString;
 }

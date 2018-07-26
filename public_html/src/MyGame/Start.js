@@ -30,15 +30,15 @@ Start.prototype.initialize = function () {
     );
     //this.mCamera.setBackgroundColor([0.5, 0.5, 0.9, 1]);
 
-    this.mMsg = new FontRenderable("This is splash screen");
-    this.mMsg.setColor([1, 0, 0, 1]);
-    this.mMsg.getXform().setPosition(0, 0);
-    this.mMsg.setTextHeight(5);
+    //this.mMsg = new FontRenderable("This is splash screen");
+    //this.mMsg.setColor([1, 0, 0, 1]);
+    //this.mMsg.getXform().setPosition(0, 0);
+    //this.mMsg.setTextHeight(5);
     
     this.mBack = new SpriteRenderable(this.kBack);
-    this.mBack.setColor([0, 0.5, 1, 0]);  // No tinting
-    this.mBack.getXform().setPosition(30, 20);
-    this.mBack.getXform().setSize(200, 100);
+    this.mBack.setColor([1, 1, 1, 0]);  // No tinting
+    this.mBack.getXform().setPosition(-5, 20);
+    this.mBack.getXform().setSize(290, 120);
 };
 
 // This is the draw function, make sure to setup proper drawing environment, and more
@@ -50,11 +50,11 @@ Start.prototype.draw = function () {
     this.mCamera.setupViewProjection();
     
     this.mBack.draw(this.mCamera);
-    this.mMsg.setText("ESCAPE");
-    this.mMsg.getXform().setPosition(20, 50);
-    this.mMsg.draw(this.mCamera);
-    this.mMsg.setText("Press Space to Start.......");
-    this.mMsg.getXform().setPosition(40, -10);
+    //this.mMsg.setText("ESCAPE");
+    //this.mMsg.getXform().setPosition(20, 50);
+    //this.mMsg.draw(this.mCamera);
+    //this.mMsg.setText("Press Space to Start.......");
+    //this.mMsg.getXform().setPosition(40, -10);
     this.mMsg.draw(this.mCamera);
     
 };
@@ -62,13 +62,12 @@ Start.prototype.draw = function () {
 // The Update function, updates the application state. Make sure to _NOT_ draw
 // anything from this function!
 Start.prototype.update = function () {
-    
     // select which character to work with
     if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space)){
         var myGame = new MyGame();
         gEngine.Core.initializeEngineCore('GLCanvas', myGame);
+
     }
-   
 };
 
 

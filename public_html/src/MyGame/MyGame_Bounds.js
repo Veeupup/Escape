@@ -23,50 +23,11 @@ MyGame.prototype.radomizeVelocity = function()
     }
 };
 
-MyGame.prototype.createBounds = function() {
-    var x = 15, w = 30, y = 0;
-    for (x = -50; x < 240; x+=30) 
-        this.platformAt(x, y, w, 0);
-    y = 80;
-    for (x = -50; x < 240; x+=30) 
-        this.platformAt(x, y, w, 180);
-    var i = 0;
-    //first floor
-    this.platformAt(-40, 20, 40, 0, 3.5);
-    for(i=0;i<9;i++){
-        this.platformAt(20*i, 20, 20, 0, 3.5);
-    };
-    //second floor
-    this.platformAt(-40, 40, 80, 0, 3.5);
-    for(i=2;i<7;i++){
-        this.platformAt(20*i, 40, 20, 0, 3.5);
-    };
-    this.platformAt(120, 40, 30, 0, 3.5);
-    //third floor
-    this.platformAt(130, 60, 100, 0, 3.5);
-    for(i=-2;i<4;i++){
-        this.platformAt(20*i, 60, 20, 0, 3.5);
-    };
-    
-    x = -48;
-    w = 3;
-    for (y = 8; y < 90; y+=12) 
-        this.wallAt(x, y, w);
-    x = 148;
-    for (y = 8; y < 90; y+=12) 
-        this.wallAt(x, y, w);
-    
-    var r = new TextureRenderable(this.kTargetTexture);
-    this.mTarget = new GameObject(r);
-    var xf = r.getXform();
-    xf.setSize(3, 3);
-};
-
 MyGame.prototype.wallAt = function (x, y, w) {
     var h = w * 4;
-    var p = new TextureRenderable(this.kWallTexture);
+    var p = new LightRenderable(this.kWallTexture);
     var xf = p.getXform();
-    
+    p.addLight(this.kLight);
     var g = new GameObject(p);
     var r = new RigidRectangle(xf, w, h);
     g.setRigidBody(r);
@@ -79,11 +40,16 @@ MyGame.prototype.wallAt = function (x, y, w) {
     this.mAllObjs.addToSet(g);
 };
 
-MyGame.prototype.platformAt = function (x, y, w, rot, h) {
+MyGame.prototype.platformAt = function (x, y, w, rot, h, texture) {
     //var h = w / 8;
     if(h == null) h = w / 8;
-    var p = new TextureRenderable(this.kPlatformTexture);
+    if(texture ==null){
+        var p = new LightRenderable(this.kPlatformTexture);
+    }else{
+         var p = new LightRenderable(texture);
+    }  
     var xf = p.getXform();
+    p.addLight(this.kLight);
     
     var g = new GameObject(p);
     var r = new RigidRectangle(xf, w, h);
@@ -99,7 +65,8 @@ MyGame.prototype.platformAt = function (x, y, w, rot, h) {
 };
 
 MyGame.prototype.createBounds2 = function() {
-    var x = 15, w = 30, y = -5;
+    //remote walls
+    var x = 15, w = 30, y = -0.6;
     for (x = -50; x < 240; x+=30) 
         this.platformAt(x, y, w, 0);
     for (x = -50; x < 240; x+=30) 
@@ -109,19 +76,25 @@ MyGame.prototype.createBounds2 = function() {
         this.platformAt(x, y, w, 180);
     var i = 0;
     //first floor
-    this.platformAt(150, 20,100, 0, 3.5);
+    this.platformAt(140, 20,20, 0);
+    this.platformAt(120, 20,20, 0);
     this.platformAt(70, 20,20, 0, 3.5);
     for(i=-2;i<3;i++){
         this.platformAt(20*i, 20, 20, 0, 3.5);
     };
     //second floor
-    this.platformAt(-40, 40, 40, 0, 3.5);
+    this.platformAt(-40, 40, 20, 0, 3.5);
+    this.platformAt(-30,40,20,0,3.5);
     for(i=0;i<6;i++){
         this.platformAt(20*i, 40, 20, 0, 3.5);
+        //this.platformAt(20*i, 40, 20, 0, 3.5)
     };
-    this.platformAt(140, 40, 40, 0, 3.5);
+    this.platformAt(140, 40, 20, 0, 3.5);
     //third floor
-    this.platformAt(130, 60, 100, 0, 3.5);
+    this.platformAt(140, 60, 20, 0, 3.5);
+    this.platformAt(120, 60, 20, 0, 3.5);
+    this.platformAt(100, 60, 20, 0, 3.5);
+    this.platformAt(89, 60, 20, 0, 3.5);
     for(i=-2;i<4;i++){
         this.platformAt(20*i, 60, 20, 0, 3.5);
     };
@@ -130,20 +103,51 @@ MyGame.prototype.createBounds2 = function() {
     w = 3;
     for (y = 0; y < 90; y+=12) 
         this.wallAt(x, y, w);
+    
     x = 148;
     for (y = 0; y < 90; y+=12) 
         this.wallAt(x, y, w);
     
-    var r = new TextureRenderable(this.kTargetTexture);
+    var r = new LightRenderable(this.kTargetTexture);
     this.mTarget = new GameObject(r);
+    r.addLight(this.kLight);
     var xf = r.getXform();
     xf.setSize(3, 3);
+    
+    
 };
 
+MyGame.prototype.elevatorAt = function (x, y, w, rot, h) {
+    //var h = w / 8;
+    if(h == null) h = w / 8;
+    var p = new LightRenderable(this.kelevator);
+    var xf = p.getXform();
+    p.addLight(this.kLight);
+
+    var g = new GameObject(p);
+    var r = new RigidRectangle(xf, w, h);
+    g.setRigidBody(r);
+    g.toggleDrawRenderable();
+    g.toggleDrawRigidShape();
+
+    r.setMass(0);
+    xf.setSize(w, h);
+    xf.setPosition(x, y);
+    xf.setRotationInDegree(rot);
+    this.mAllObjs.addToSet(g);
+};
+
+
 MyGame.prototype.createElevator = function(){
-    this.platformAt(55 , 2, 9, 0, 1);
-    this.platformAt(-15, 22, 9, 0, 1);
-    this.platformAt(115, 22, 9, 0, 1);
-    this.platformAt(75, 42, 9, 0, 1);
+    this.elevatorAt(55 , 2, 9, 0, 1);
+    this.elevatorAt(-15, 22, 9, 0, 1);
+    this.elevatorAt(115, 22, 9, 0, 1);
+    this.elevatorAt(75, 42, 9, 0, 1);
+};
+
+MyGame.prototype.createSide = function(){
+    this.platformAt(-90,50,80,0,120, this.kSide);
+    this.platformAt(162,50,26,0,100, this.kSide);
+    this.platformAt(50,-52,400,0,100, this.kSide);
 };
     
