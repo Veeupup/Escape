@@ -204,9 +204,9 @@ MyGame.prototype.initialize = function () {
     this.createSide();
 
      //rips
-     var countRip = 4;
+     var countRip = 8;
      var tempCount = 0;
-     for(;tempCount<4;tempCount++){
+     for(;tempCount<8;tempCount++){
          var m = this._initialItem( this.kRip, 30, -50, 5, 5, this.kLight);
          this.ripSet.push(m);
      }

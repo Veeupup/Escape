@@ -10,13 +10,9 @@ MyGame.prototype.CrashIntoMonster = function(){
                 (xhero - this.mMonster[i].getXform().getXPos())<=5&&
                 (yhero - this.mMonster[i].getXform().getYPos())>=-8&&
                 (yhero - this.mMonster[i].getXform().getYPos())<=8&&(this.isMoving=== true)){
-            this.mHero.mRenderComponent.mXform.mPosition[0] = 5;
-            this.mHero.mRenderComponent.mXform.mPosition[1] = 10;
-            this.isChest0 = false;
-            this.isChest1 = false;
-            this.isNet = 0;
-            this.isGun = 0;
-            this.mNetTrack.mXform.mPosition[0] = -100;
+            var myGame = new MyGame();
+            gEngine.Core.initializeEngineCore('GLCanvas', myGame);
+            console.log("死掉");  
         }
     }
 };
@@ -122,10 +118,13 @@ MyGame.prototype.BulletCrashInto = function(){
                 (ybullet - this.mMonster[i].getXform().getYPos())>=-8&&
                 (ybullet - this.mMonster[i].getXform().getYPos())<=8){
             
+            this.ripSet[this.ripNum].mXform.mPosition[0] = xbullet;
+            this.ripSet[this.ripNum++].mXform.mPosition[1] = ybullet-1;
             this.mMonster[i].mRenderComponent.mXform.mPosition[0] = -50;
             this.mMonster[i].mRenderComponent.mXform.mPosition[1] = -1000;
             this.mNetTrack.mXform.mPosition[0] = -50;
             this.mNetTrack.mXform.mPosition[1] = -50;
+            
             
             this.mgunstate = false;
             this.mbullet.mXform.mPosition[1] = -50;
