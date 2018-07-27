@@ -50,11 +50,6 @@ Start.prototype.draw = function () {
     this.mCamera.setupViewProjection();
     
     this.mBack.draw(this.mCamera);
-    //this.mMsg.setText("ESCAPE");
-    //this.mMsg.getXform().setPosition(20, 50);
-    //this.mMsg.draw(this.mCamera);
-    //this.mMsg.setText("Press Space to Start.......");
-    //this.mMsg.getXform().setPosition(40, -10);
     this.mMsg.draw(this.mCamera);
     
 };

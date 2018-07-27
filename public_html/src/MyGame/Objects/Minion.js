@@ -18,7 +18,7 @@ function Minion(spriteTexture, atX, atY, boundX, boundX1, light) {
     this.flag = 0;
     this.bx = boundX;
     this.bx1 = boundX1;
-    this.direction = 1;//true is direction right
+    this.direction = 1;
     this.kDelta=0.1;
     this.mMinion = new LightRenderable(spriteTexture);
     this.mMinion.setColor([1, 1, 1, 0]);
@@ -35,7 +35,7 @@ function Minion(spriteTexture, atX, atY, boundX, boundX1, light) {
     GameObject.call(this, this.mMinion);
 
     var r;
-        r = new RigidRectangle(this.getXform(), w, h);
+    r = new RigidRectangle(this.getXform(), w, h);
 
     this.setRigidBody(r);
     this.toggleDrawRenderable();
@@ -45,10 +45,6 @@ gEngine.Core.inheritPrototype(Minion, WASDObj);
 
 Minion.prototype.update = function (aCamera) {
     var xform = this.getXform();
-
-
-
-
  switch(this.flag)
         {
             case 0:
