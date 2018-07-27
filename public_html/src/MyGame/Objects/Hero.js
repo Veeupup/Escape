@@ -10,7 +10,7 @@
 /* find out more about jslint: http://www.jslint.com/help.html */
 
 "use strict";  // Operate in Strict mode such that variables must be declared before used!
-function Hero(spriteTexture , light) {
+function Hero(spriteTexture , light, x, y) {
     this.floor = -1;
     this.kDelta = 0.3;
     this.xdminnow=0;
@@ -26,7 +26,7 @@ function Hero(spriteTexture , light) {
     this.mDye = null;
     this.mDye = new LightRenderable(spriteTexture);
     this.mDye.setColor([1, 1, 1, 0]);
-    this.mDye.getXform().setPosition(-5, 10);
+    this.mDye.getXform().setPosition(x, y);
     this.mDye.getXform().setSize(5, 8);
     this.mDye.setElementPixelPositions(21.5,43,128-32,128);
     this.mDye.addLight(light);

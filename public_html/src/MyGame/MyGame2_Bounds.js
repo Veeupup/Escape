@@ -25,9 +25,9 @@ MyGame2.prototype.radomizeVelocity = function()
 
 MyGame2.prototype.wallAt = function (x, y, w) {
     var h = w * 4;
-    var p = new TextureRenderable(this.kWallTexture);
+    var p = new LightRenderable(this.kWallTexture);
     var xf = p.getXform();
-    
+    p.addLight(this.kLight);
     var g = new GameObject(p);
     var r = new RigidRectangle(xf, w, h);
     g.setRigidBody(r);
@@ -121,8 +121,9 @@ MyGame2.prototype.createBounds2 = function() {
     for (y = 0; y < 90; y+=12)
         this.wallAt(x, y, w);
 
-    var r = new TextureRenderable(this.kTargetTexture);
+    var r = new LightRenderable(this.kTargetTexture);
     this.mTarget = new GameObject(r);
+    r.addLight(this.kLight);
     var xf = r.getXform();
     xf.setSize(3, 3);
 };
@@ -146,7 +147,7 @@ MyGame2.prototype.elevatorAt = function (x, y, w, rot, h) {
     xf.setPosition(x, y);
     xf.setRotationInDegree(rot);
     this.mAllObjs.addToSet(g);
-
+    this.mElevator.push(g);
 };
 
 MyGame2.prototype.createElevator = function(){

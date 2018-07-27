@@ -1,38 +1,39 @@
 //这个文件用来初始化第一关卡的各种功能
 "use strict";
 
-MyGame.prototype.CrashIntoMonster = function(){
+MyGame2.prototype.CrashIntoMonster = function(){
     var xhero = this.mHero.getXform().getXPos();
     var yhero = this.mHero.getXform().getYPos();
     var i;
     for(i=0;i<this.mMonster.length;i++){
         if((xhero - this.mMonster[i].getXform().getXPos())>=-5&&
-                (xhero - this.mMonster[i].getXform().getXPos())<=5&&
-                (yhero - this.mMonster[i].getXform().getYPos())>=-8&&
-                (yhero - this.mMonster[i].getXform().getYPos())<=8&&(this.isMoving=== true)){
+            (xhero - this.mMonster[i].getXform().getXPos())<=5&&
+            (yhero - this.mMonster[i].getXform().getYPos())>=-8&&
+            (yhero - this.mMonster[i].getXform().getYPos())<=8&&(this.isMoving=== true)){
             var myGame = new GameOver();
             gEngine.Core.initializeEngineCore('GLCanvas', myGame);
         }
     }
 };
 
-MyGame.prototype.chase=function(){
+
+MyGame2.prototype.chase=function(){
     var xhero = this.mHero.getXform().getXPos();
     var yhero = this.mHero.getXform().getYPos();
     var i;
     for(i=0;i<this.mMonster.length;i++){
         if((xhero - this.mMonster[i].getXform().getXPos())>=-20&&
-                (xhero - this.mMonster[i].getXform().getXPos())<-5&&
-                (yhero - this.mMonster[i].getXform().getYPos())>=-5&&
-                (yhero - this.mMonster[i].getXform().getYPos())<=5){
+            (xhero - this.mMonster[i].getXform().getXPos())<-5&&
+            (yhero - this.mMonster[i].getXform().getYPos())>=-5&&
+            (yhero - this.mMonster[i].getXform().getYPos())<=5){
             this.mMonster[i].flag=-1;
             gEngine.AudioClips.playACue(this.kfindzombie);
-            
+
         }
         else if((xhero - this.mMonster[i].getXform().getXPos())>5&&
-                (xhero - this.mMonster[i].getXform().getXPos())<=20&&
-                (yhero - this.mMonster[i].getXform().getYPos())>=-5&&
-                (yhero - this.mMonster[i].getXform().getYPos())<=5){
+            (xhero - this.mMonster[i].getXform().getXPos())<=20&&
+            (yhero - this.mMonster[i].getXform().getYPos())>=-5&&
+            (yhero - this.mMonster[i].getXform().getYPos())<=5){
             gEngine.AudioClips.playACue(this.kfindzombie);
             this.mMonster[i].flag=1;
         }
@@ -40,7 +41,7 @@ MyGame.prototype.chase=function(){
             this.mMonster[i].flag=0;
     }
 };
-MyGame.prototype.elevatoraction = function (elevator,ylow,yhigh) {
+MyGame2.prototype.elevatoraction = function (elevator,ylow,yhigh) {
     var ele1 = elevator;
     var ele1_h = ele1.mRenderComponent.mXform.mPosition[1];
     if((ele1_h-yhigh)<0 && this.top===false){
@@ -57,16 +58,16 @@ MyGame.prototype.elevatoraction = function (elevator,ylow,yhigh) {
     }
 };
 
-MyGame.prototype.NetTrack = function(){
+MyGame2.prototype.NetTrack = function(){
     var xTrack = this.mNetTrack.mXform.mPosition[0];
     var yTrack = this.mNetTrack.mXform.mPosition[1];
     var i = 0;
     var ripName = "";
     for(i=0;i<this.mMonster.length;i++){
         if((xTrack - this.mMonster[i].getXform().getXPos())>=-5&&
-                (xTrack - this.mMonster[i].getXform().getXPos())<=5&&
-                (yTrack - this.mMonster[i].getXform().getYPos())>=-8&&
-                (yTrack - this.mMonster[i].getXform().getYPos())<=8){
+            (xTrack - this.mMonster[i].getXform().getXPos())<=5&&
+            (yTrack - this.mMonster[i].getXform().getYPos())>=-8&&
+            (yTrack - this.mMonster[i].getXform().getYPos())<=8){
             this.mMonster[i].mRenderComponent.mXform.mPosition[0] = -100;
             this.mMonster[i].mRenderComponent.mXform.mPosition[1] = -100;
             this.mNetTrack.mXform.mPosition[0] = -100;
@@ -79,7 +80,7 @@ MyGame.prototype.NetTrack = function(){
     return false;
 };
 
-MyGame.prototype._createALight = function (type, pos, dir, color, n, f, inner, outer, intensity, dropOff) {
+MyGame2.prototype._createALight = function (type, pos, dir, color, n, f, inner, outer, intensity, dropOff) {
     var light = new Light();
     light.setLightType(type);
     light.setColor(color);
@@ -97,31 +98,30 @@ MyGame.prototype._createALight = function (type, pos, dir, color, n, f, inner, o
 
     return light;
 };
-MyGame.prototype.bulletmove = function() {
-            if(this.mbulletflag === 0){
-                this.mbulletdirection = this.mdirection;
-                var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
-                var yHero = this.mHero.mRenderComponent.mXform.mPosition[1];
-                this.mbullet.mXform.mPosition[0] = xHero;
-                this.mbullet.mXform.mPosition[1] = yHero;
-                this.mbulletflag = 1;
-            }
+MyGame2.prototype.bulletmove = function() {
+    if(this.mbulletflag === 0){
+        this.mbulletdirection = this.mdirection;
+        var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
+        var yHero = this.mHero.mRenderComponent.mXform.mPosition[1];
+        this.mbullet.mXform.mPosition[0] = xHero;
+        this.mbullet.mXform.mPosition[1] = yHero;
+        this.mbulletflag = 1;
+    }
 };
-MyGame.prototype.BulletCrashInto = function(){
+MyGame2.prototype.BulletCrashInto = function(){
     var xbullet = this.mbullet.mXform.mPosition[0];
     var ybullet = this.mbullet.mXform.mPosition[1];
-     for(var i=0;i<this.mMonster.length;i++){
+    for(var i=0;i<this.mMonster.length;i++){
         if((xbullet - this.mMonster[i].getXform().getXPos())>=-5&&
-                (xbullet - this.mMonster[i].getXform().getXPos())<=5&&
-                (ybullet - this.mMonster[i].getXform().getYPos())>=-8&&
-                (ybullet - this.mMonster[i].getXform().getYPos())<=8){
-            
-            this.ripSet[this.ripNum].mXform.mPosition[0] = xbullet;
-            this.ripSet[this.ripNum++].mXform.mPosition[1] = ybullet-1;
+            (xbullet - this.mMonster[i].getXform().getXPos())<=5&&
+            (ybullet - this.mMonster[i].getXform().getYPos())>=-8&&
+            (ybullet - this.mMonster[i].getXform().getYPos())<=8){
+
             this.mMonster[i].mRenderComponent.mXform.mPosition[0] = -50;
             this.mMonster[i].mRenderComponent.mXform.mPosition[1] = -1000;
-            
-            
+            this.mNetTrack.mXform.mPosition[0] = -50;
+            this.mNetTrack.mXform.mPosition[1] = -50;
+
             this.mgunstate = false;
             this.mbullet.mXform.mPosition[1] = -50;
             this.mbullet.mXform.mPosition[0] = 20;
@@ -136,7 +136,7 @@ MyGame.prototype.BulletCrashInto = function(){
         this.mbulletflag = 0;
     }
 };
-MyGame.prototype.bulletjudge = function(){
+MyGame2.prototype.bulletjudge = function(){
     if(this.mgunstate === true)
     {
         if(this.mbulletmovespeedflag!==0)
@@ -158,6 +158,6 @@ MyGame.prototype.bulletjudge = function(){
                 this.mbulletmovespeedflag++;
             }
         }
-        this.BulletCrashInto(); 
+        this.BulletCrashInto();
     }
 };

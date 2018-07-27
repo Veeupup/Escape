@@ -28,12 +28,6 @@ Start.prototype.initialize = function () {
         [0, 0, 1280, 720],         // viewport (orgX, orgY, width, height)
         2
     );
-    //this.mCamera.setBackgroundColor([0.5, 0.5, 0.9, 1]);
-
-    //this.mMsg = new FontRenderable("This is splash screen");
-    //this.mMsg.setColor([1, 0, 0, 1]);
-    //this.mMsg.getXform().setPosition(0, 0);
-    //this.mMsg.setTextHeight(5);
     
     this.mBack = new SpriteRenderable(this.kBack);
     this.mBack.setColor([1, 1, 1, 0]);  // No tinting
@@ -48,9 +42,7 @@ Start.prototype.draw = function () {
     //gEngine.Core.clearCanvas([0.9, 0.9, 0.9, 1.0]); // clear to light gray
     
     this.mCamera.setupViewProjection();
-    
     this.mBack.draw(this.mCamera);
-    this.mMsg.draw(this.mCamera);
     
 };
 
@@ -61,10 +53,8 @@ Start.prototype.update = function () {
     if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space)){
         var myGame = new MyGame();
         gEngine.Core.initializeEngineCore('GLCanvas', myGame);
-
     }
 };
-
 
 Start.prototype.unloadScene = function() {
     gEngine.Textures.unloadTexture(this.kBack);
