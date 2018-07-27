@@ -135,6 +135,7 @@ MyGame.prototype.elevatorAt = function (x, y, w, rot, h) {
     xf.setPosition(x, y);
     xf.setRotationInDegree(rot);
     this.mAllObjs.addToSet(g);
+    this.mElevator.push(g);
 };
 
 

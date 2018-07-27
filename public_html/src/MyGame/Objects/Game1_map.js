@@ -74,7 +74,7 @@ MyGame.prototype._initialMinion = function(){
         this.mAllObjs.addToSet(m);
         this.mMonster.push(m);
     
-        m = new Minion(this.kMinion, 180,70,115,125 ,this.kLight);
+        m = new Minion(this.kMinion, 120,70,115,130 ,this.kLight);
         this.mAllObjs.addToSet(m);
         this.mMonster.push(m);
 };
