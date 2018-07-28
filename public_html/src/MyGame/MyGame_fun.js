@@ -40,21 +40,60 @@ MyGame.prototype.chase=function(){
             this.mMonster[i].flag=0;
     }
 };
-MyGame.prototype.elevatoraction = function (elevator,ylow,yhigh) {
+
+MyGame.prototype.elevatoraction = function (elevator,ylow,yhigh,istop,iselevatorcrash) {
     var ele1 = elevator;
     var ele1_h = ele1.mRenderComponent.mXform.mPosition[1];
-    if((ele1_h-yhigh)<0 && this.top===false){
+    var ele1_x = ele1.mRenderComponent.mXform.mPosition[0];
+    var yHero = this.mHero.mRenderComponent.mXform.mPosition[1];
+    var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
+    if(((ele1_h - yHero) > 2)&&((ele1_h - yHero) < 5)&&((ele1_x -xHero) > -7)&&((ele1_x - xHero) < 7)&&(istop === true)){
+        iselevatorcrash = true;
+    }
+    for(var i = 0 ; i < this.mMonster.length ; i++ ){
+        var xMonster = this.mMonster[i].mRenderComponent.mXform.mPosition[0];
+        var yMonster = this.mMonster[i].mRenderComponent.mXform.mPosition[1];
+        if(((ele1_h - yMonster) > 2)&&((ele1_h - yMonster) < 5)&&((ele1_x -xMonster) > -5)&&((ele1_x - xMonster) < 5)&&(istop === true))
+        {
+            iselevatorcrash = true;
+        }
+    }
+    if(iselevatorcrash === false)
+    {
+        if((ele1_h-yhigh)<0 && istop === false)
+        {
         ele1.mRenderComponent.mXform.mPosition[1]+=0.2;
+        }
+        if((ele1_h-yhigh)<0.001&&(ele1_h-yhigh)>0)
+        {
+            istop = true;
+        }
+        if((ele1_h-ylow)>0 && istop === true)
+        {
+            ele1.mRenderComponent.mXform.mPosition[1]-=0.2;
+        }
+        if((ele1_h-ylow)<0.0001)
+        {
+            istop = false;
+        }
     }
-    if((ele1_h-yhigh)<0.001&&(ele1_h-yhigh)>0){
-        this.top = true;
+    else{
+        istop = false;
+        iselevatorcrash = false;
     }
-    if((ele1_h-ylow)>0 && this.top===true){
-        ele1.mRenderComponent.mXform.mPosition[1]-=0.2;
+    
+    //判断hero是否在elevator上，并移动hero
+    if(((yHero-ele1_h) > 2)&&((yHero-ele1_h) < 5)&&((xHero-ele1_x) > -7)&&((xHero-ele1_x) < 7)&&(istop === true)){
+        console.log(yHero);
+        this.isOnElevator = true;
     }
-    if((ele1_h-ylow)<0.0001){
-        this.top = false;
+    else{
+       this.isOnElevator = false; 
     }
+    if(this.isOnElevator === true){
+        this.mHero.mRenderComponent.mXform.mPosition[1]-=0.2;
+    }
+    return [istop,iselevatorcrash];
 };
 
 MyGame.prototype.NetTrack = function(){

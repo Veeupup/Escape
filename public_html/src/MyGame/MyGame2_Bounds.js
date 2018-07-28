@@ -66,14 +66,14 @@ MyGame2.prototype.platformAt = function (x, y, w, rot, h, texture) {
 };
 
 MyGame2.prototype.createBounds2 = function() {
-    var x = 15, w = 30, y = -0.6;
-    for (x = 40; x < 210; x+=30)
-        this.platformAt(x, y, w, 0,3.5);
-    for (x = -50; x < 240; x+=30)
-        this.platformAt(x, -0.6, w, 0,3.5);
+    var x = 15, w = 20, y = -0.6;
+    for (x = -40; x < 160; x+=20) 
+        this.platformAt(x, y, w, 0, 3.5);
+//    for (x = -50; x < 240; x+=30) 
+//        this.platformAt(x, -0.6, w, 0);
     y = 80;
-    for (x = -40; x < 210; x+=30)
-        this.platformAt(x, y, w, 0,3.5);
+    for (x = -40; x < 160; x+=20) 
+        this.platformAt(x, y, w, 180, 3.5);
     var i = 0;
     //first floor
     this.platformAt(140, 20,20, 0,3.5);
