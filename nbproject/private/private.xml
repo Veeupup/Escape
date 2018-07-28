@@ -6,10 +6,13 @@
         <group name="BookChapters">
             <file>file:/C:/Users/93141/Desktop/Escape/public_html/src/MyGame/Animation/EvilComing.js</file>
             <file>file:/C:/Users/93141/Desktop/Escape/public_html/src/MyGame/Objects/Game2_map.js</file>
+            <file>file:/C:/Users/93141/Desktop/Escape/public_html/src/MyGame/GameOver.js</file>
             <file>file:/C:/Users/93141/Desktop/Escape/public_html/src/Engine/Renderables/SpriteAnimateRenderable.js</file>
             <file>file:/C:/Users/93141/Desktop/Escape/public_html/src/MyGame/Start.js</file>
             <file>file:/C:/Users/93141/Desktop/Escape/public_html/src/MyGame/MyGame.js</file>
+            <file>file:/C:/Users/93141/Desktop/Escape/public_html/assets/EvilComing.png</file>
             <file>file:/C:/Users/93141/Desktop/Escape/public_html/src/MyGame/MyGame2.js</file>
+            <file>file:/C:/Users/93141/Desktop/Escape/public_html/src/Engine/Core/Engine_GameLoop.js</file>
         </group>
     </open-files>
 </project-private>

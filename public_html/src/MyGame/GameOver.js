@@ -1,6 +1,6 @@
 "use strict";  // Operate in Strict mode such that variables must be declared before used!
 
-function GameOver( nowMission) {
+function GameOver(nowMission) {
     // The camera to view the scene
     this.kBack = "assets/back.png";
     this.mCamera = null;
@@ -66,17 +66,12 @@ GameOver.prototype.draw = function () {
 // The Update function, updates the application state. Make sure to _NOT_ draw
 // anything from this function!
 GameOver.prototype.update = function () {
-    // select which character to work with
-    if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space)){
-        var myGame = new MyGame();
-        gEngine.Core.initializeEngineCore('GLCanvas', myGame);
-    }
     //决定从当前关卡重新开始
-    if (gEngine.Input.isKeyClicked(gEngine.Input.keys.W)){
+    if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space)){
         if(this.nowMission===1){
             var myGame = new MyGame();
             gEngine.Core.initializeEngineCore('GLCanvas', myGame);
-        }else{
+        }else if(this.nowMission===2){
             var myGame = new MyGame2();
             gEngine.Core.initializeEngineCore('GLCanvas', myGame);
         };

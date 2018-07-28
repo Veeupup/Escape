@@ -10,7 +10,7 @@ MyGame.prototype.CrashIntoMonster = function(){
                 (xhero - this.mMonster[i].getXform().getXPos())<=5&&
                 (yhero - this.mMonster[i].getXform().getYPos())>=-8&&
                 (yhero - this.mMonster[i].getXform().getYPos())<=8&&(this.isMoving=== true)){
-            var myGame = new GameOver(1);
+            var myGame = new Revive(1);
             gEngine.Core.initializeEngineCore('GLCanvas', myGame);
         }
     }
