@@ -30,7 +30,7 @@ MyGame2.prototype._initialAll = function(){
     this.mNet = this._initialItem( this.kNet, 10, -50, 5, 6, this.kLight);
     this.mbullet = this._initialItem( this.kbullet, 20, -50, 3, 3, this.kLight);
     this.mNetTrack = this._initialItem( this.kNetTrack, 10, -50, 5, 5, this.kLight);
-    this.mpaper = this._initialItem( this.kPaper, 0, -40, 80, 15, this.kLight);
+    this.mpaper = this._initialItem( this.kPaper, 0, -40, 40, 15, this.kLight);
 
 };
 

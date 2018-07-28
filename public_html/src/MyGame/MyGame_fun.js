@@ -10,7 +10,7 @@ MyGame.prototype.CrashIntoMonster = function(){
                 (xhero - this.mMonster[i].getXform().getXPos())<=5&&
                 (yhero - this.mMonster[i].getXform().getYPos())>=-8&&
                 (yhero - this.mMonster[i].getXform().getYPos())<=8&&(this.isMoving=== true)){
-            var myGame = new GameOver();
+            var myGame = new GameOver(1);
             gEngine.Core.initializeEngineCore('GLCanvas', myGame);
         }
     }
@@ -63,8 +63,8 @@ MyGame.prototype.NetTrack = function(){
     var i = 0;
     var ripName = "";
     for(i=0;i<this.mMonster.length;i++){
-        if((xTrack - this.mMonster[i].getXform().getXPos())>=-5&&
-                (xTrack - this.mMonster[i].getXform().getXPos())<=5&&
+        if((xTrack - this.mMonster[i].getXform().getXPos())>=-3&&
+                (xTrack - this.mMonster[i].getXform().getXPos())<=3&&
                 (yTrack - this.mMonster[i].getXform().getYPos())>=-8&&
                 (yTrack - this.mMonster[i].getXform().getYPos())<=8){
             this.mMonster[i].mRenderComponent.mXform.mPosition[0] = -100;
