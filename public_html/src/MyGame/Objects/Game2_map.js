@@ -25,9 +25,14 @@ MyGame2.prototype._initialAll = function(){
     var ychest1 = this.chestPosition[this.chestrandom][1];
     this.mchest1 = this._initialItem( this.kChest, xchest1, ychest1, 5, 6, this.kLight);
 
+    var xchest3 = this.chest3Position[this.chest3random][0];
+    var ychest3 = this.chest3Position[this.chest3random][1];
+    this.mchest3 = this._initialItem( this.kChest, xchest3, ychest3, 5, 6, this.kLight);
+    
     //游戏道具
     this.mGun = this._initialItem( this.kGun, 10, -50, 5, 6, this.kLight);
     this.mNet = this._initialItem( this.kNet, 10, -50, 5, 6, this.kLight);
+    this.mLargeSight = this._initialItem(this.kLargeSight, 10, -50, 5, 6, this.kLight);
     this.mbullet = this._initialItem( this.kbullet, 20, -50, 3, 3, this.kLight);
     this.mNetTrack = this._initialItem( this.kNetTrack, 10, -50, 5, 5, this.kLight);
     this.mpaper = this._initialItem( this.kPaper, 0, -40, 40, 15, this.kLight);

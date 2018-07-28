@@ -156,11 +156,12 @@ MyGame2.prototype.BulletCrashInto = function(){
             (xbullet - this.mMonster[i].getXform().getXPos())<=5&&
             (ybullet - this.mMonster[i].getXform().getYPos())>=-8&&
             (ybullet - this.mMonster[i].getXform().getYPos())<=8){
-
+            this.ripSet[this.ripNum].mXform.mPosition[0] = xbullet;
+            this.ripSet[this.ripNum++].mXform.mPosition[1] = ybullet-1;
             this.mMonster[i].mRenderComponent.mXform.mPosition[0] = -50;
             this.mMonster[i].mRenderComponent.mXform.mPosition[1] = -1000;
-            this.mNetTrack.mXform.mPosition[0] = -50;
-            this.mNetTrack.mXform.mPosition[1] = -50;
+            this.mGun.mXform.mPosition[0] = -50;
+            this.mGun .mXform.mPosition[1] = -50;
 
             this.mgunstate = false;
             this.mbullet.mXform.mPosition[1] = -50;

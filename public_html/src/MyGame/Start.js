@@ -51,7 +51,7 @@ Start.prototype.draw = function () {
 Start.prototype.update = function () {
     // select which character to work with
     if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space)){
-        var myGame = new MyGame2();
+        var myGame = new EvilComing();
         gEngine.Core.initializeEngineCore('GLCanvas', myGame);
     }
 };
