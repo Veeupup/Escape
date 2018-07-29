@@ -10,8 +10,8 @@ MyGame.prototype.CrashIntoMonster = function(){
                 (xhero - this.mMonster[i].getXform().getXPos())<=5&&
                 (yhero - this.mMonster[i].getXform().getYPos())>=-8&&
                 (yhero - this.mMonster[i].getXform().getYPos())<=8&&(this.isMoving=== true)){
-            var myGame = new Revive(1);
-            gEngine.Core.initializeEngineCore('GLCanvas', myGame);
+            this.mRestart = true;
+            gEngine.GameLoop.stop();
         }
     }
 };
@@ -25,8 +25,8 @@ MyGame.prototype.CrashIntoTrap = function(){
         var trapy = this.mtrap[i].mXform.mPosition[1];
         if(this.mtrap[i].mXform.mScale[1] > 1){
             if((xhero - trapx) <= 4 && (xhero - trapx) >= -4 && (yhero - trapy) >= 0 && (yhero - trapy) <= 6){
-                var myGame = new Revive(1);
-                gEngine.Core.initializeEngineCore('GLCanvas', myGame);
+                this.mRestart = true;
+                gEngine.GameLoop.stop();
             }
         }
     }
@@ -153,67 +153,74 @@ MyGame.prototype._createALight = function (type, pos, dir, color, n, f, inner, o
 
     return light;
 };
+
 MyGame.prototype.bulletmove = function() {
-            if(this.mbulletflag === 0){
-                this.mbulletdirection = this.mdirection;
-                var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
-                var yHero = this.mHero.mRenderComponent.mXform.mPosition[1];
-                this.mbullet.mXform.mPosition[0] = xHero;
-                this.mbullet.mXform.mPosition[1] = yHero;
-                this.mbulletflag = 1;
-            }
+    if(this.mbulletflag === 0){
+        this.mbulletdirection = this.mdirection;
+        var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
+        var yHero = this.mHero.mRenderComponent.mXform.mPosition[1];
+        this.mbullet.mXform.mPosition[0] = xHero;
+        this.mbullet.mXform.mPosition[1] = yHero;
+        this.mbulletflag = 1;
+    }
 };
+
 MyGame.prototype.BulletCrashInto = function(){
-    var xbullet = this.mbullet.mXform.mPosition[0];
-    var ybullet = this.mbullet.mXform.mPosition[1];
-     for(var i=0;i<this.mMonster.length;i++){
-        if((xbullet - this.mMonster[i].getXform().getXPos())>=-5&&
-                (xbullet - this.mMonster[i].getXform().getXPos())<=5&&
-                (ybullet - this.mMonster[i].getXform().getYPos())>=-8&&
-                (ybullet - this.mMonster[i].getXform().getYPos())<=8){
-            
-            this.ripSet[this.ripNum].mXform.mPosition[0] = xbullet;
-            this.ripSet[this.ripNum++].mXform.mPosition[1] = ybullet-1;
-            this.mMonster[i].mRenderComponent.mXform.mPosition[0] = -50;
-            this.mMonster[i].mRenderComponent.mXform.mPosition[1] = -1000;
-            
-            
-            this.mgunstate = false;
-            this.mbullet.mXform.mPosition[1] = -50;
-            this.mbullet.mXform.mPosition[0] = 20;
-            this.mbulletflag = 0;
-            return true;
-        }
-    }
-    if(xbullet>300||xbullet<-50){
-        this.mgunstate = false;
-        this.mbullet.mXform.mPosition[1] = -50;
-        this.mbullet.mXform.mPosition[0] = 20;
-        this.mbulletflag = 0;
-    }
+var xbullet = this.mbullet.mXform.mPosition[0];
+var ybullet = this.mbullet.mXform.mPosition[1];
+for(var i=0;i<this.mMonster.length;i++){
+if((xbullet - this.mMonster[i].getXform().getXPos())>=-5&&
+        (xbullet - this.mMonster[i].getXform().getXPos())<=5&&
+        (ybullet - this.mMonster[i].getXform().getYPos())>=-8&&
+        (ybullet - this.mMonster[i].getXform().getYPos())<=8){
+    
+    this.ripSet[this.ripNum].mXform.mPosition[0] = xbullet;
+    this.ripSet[this.ripNum++].mXform.mPosition[1] = ybullet-1;
+    this.mMonster[i].mRenderComponent.mXform.mPosition[0] = -50;
+    this.mMonster[i].mRenderComponent.mXform.mPosition[1] = -1000;
+    
+    
+    this.mgunstate = false;
+    this.mbullet.mXform.mPosition[1] = -50;
+    this.mbullet.mXform.mPosition[0] = 20;
+    this.mbulletflag = 0;
+    return true;
+}
+}
+if(xbullet>200||xbullet<-50){
+    this.mgunstate = false;
+    this.mbullet.mXform.mPosition[1] = -50;
+    this.mbullet.mXform.mPosition[0] = 20;
+    this.mbulletflag = 0;
+}
 };
 MyGame.prototype.bulletjudge = function(){
-    if(this.mgunstate === true)
+if(this.mgunstate === true)
+{
+if(this.mbulletmovespeedflag!==0)
+{
+    this.mbulletmovespeedflag++;
+    if(this.mbulletmovespeedflag === 5)
     {
-        if(this.mbulletmovespeedflag!==0)
-        {
-            this.mbulletmovespeedflag++;
-            if(this.mbulletmovespeedflag === 5)
-            {
-                this.mbulletmovespeedflag=0;
-            }
-        }
-        else if(this.mbulletflag === 1)
-        {
-            if(this.mbulletdirection === 1){
-                this.mbullet.mXform.mPosition[0] += 5;
-                this.mbulletmovespeedflag++;
-            }
-            else if(this.mbulletdirection === -1){
-                this.mbullet.mXform.mPosition[0] -= 5;
-                this.mbulletmovespeedflag++;
-            }
-        }
-        this.BulletCrashInto(); 
+        this.mbulletmovespeedflag=0;
+    }
+}
+else if(this.mbulletflag === 1)
+{                
+    if(this.mbulletdirection === 1){
+        this.mbullet.mXform.mPosition[0] += 5;
+        this.mbulletmovespeedflag++;
+    }
+    else if(this.mbulletdirection === -1){
+        this.mbullet.mXform.mPosition[0] -= 5;
+        this.mbulletmovespeedflag++;
+    }
+}
+    this.BulletCrashInto(); 
+
+}
+if(this.mgunstate === false){
+    this.mGun1.mXform.mPosition[0] = 10;
+    this.mGun1.mXform.mPosition[1] = -50;
     }
 };

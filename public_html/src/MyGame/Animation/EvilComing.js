@@ -15,6 +15,8 @@ function EvilComing( nowMission) {
     this.isTime = true;
     
     this.nowMission = nowMission;
+
+    this.mRestart = false;
 }
 gEngine.Core.inheritPrototype(EvilComing, Scene);
 
@@ -77,18 +79,20 @@ EvilComing.prototype.update = function () {
     this.mEvil.updateAnimation();
 
     if(this.isTime){
+        console.log(new Date().getTime());
         this.isTime = false;
-        setTimeout(function(){ 
-            var myGame = new EvilComing1();
-            gEngine.Core.initializeEngineCore('GLCanvas', myGame);
-        }, 500);
-        
+        var that =  this;
+        setTimeout(function(){timeup(that)} , 500);
     };
 };
 
 EvilComing.prototype.unloadScene = function() {
     gEngine.Textures.unloadTexture(this.kEvil);
     gEngine.Textures.unloadTexture(this.kBack);
+    if(this.mRestart){
+        var myGame = new EvilComing1();
+        gEngine.Core.startScene(myGame,true); 
+    }
 };
 
 EvilComing.prototype.loadScene = function () {
@@ -114,3 +118,8 @@ EvilComing.prototype._createALight = function (type, pos, dir, color, n, f, inne
 
     return light;
 };
+
+var timeup = function(that){
+    that.mRestart = true;
+    gEngine.GameLoop.stop();
+}

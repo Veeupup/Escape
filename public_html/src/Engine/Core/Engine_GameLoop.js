@@ -60,7 +60,12 @@ gEngine.GameLoop = (function () {
             this.draw();    // Call Scene.draw()
         } else {
             // this scene is done, unload it!
-            mMyGame.unloadScene();
+            try{
+                mMyGame.unloadScene();
+            }catch(err){
+                console.log(err);
+            }
+            
         }
     };
 

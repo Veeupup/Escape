@@ -15,6 +15,8 @@ function EvilComing2( nowMission) {
     this.isTime = true;
 
     this.nowMission = nowMission;
+
+    this.mRestart = false;
 }
 gEngine.Core.inheritPrototype(EvilComing2, Scene);
 
@@ -52,8 +54,6 @@ EvilComing2.prototype.initialize = function () {
     this.mEvil2.addLight(this.kLight);
     gEngine.DefaultResources.setGlobalAmbientIntensity(4);
 
-    // GameObject.call(this, this.mEvil);
-    // GameObject.call(this, this.mEvil1);
     GameObject.call(this, this.mEvil2);
 };
 // This is the draw function, make sure to setup proper drawing environment, and more
@@ -80,17 +80,10 @@ EvilComing2.prototype.update = function () {
 
     if(this.isTime){
         this.isTime = false;
-        setTimeout(function(){
-            var myGame = new MyGame();
-            gEngine.Core.initializeEngineCore('GLCanvas', myGame);
-        }, 500);
+        var that = this;
+        setTimeout(function(){timeup(that)}, 500);
 
     };
-};
-
-EvilComing2.prototype.unloadScene = function() {
-    gEngine.Textures.unloadTexture(this.kEvil);
-    gEngine.Textures.unloadTexture(this.kBack);
 };
 
 EvilComing2.prototype.loadScene = function () {
@@ -115,4 +108,15 @@ EvilComing2.prototype._createALight = function (type, pos, dir, color, n, f, inn
     light.setLightCastShadowTo(true);
 
     return light;
+};
+
+EvilComing2.prototype.unloadScene = function() {
+    gEngine.Textures.unloadTexture(this.kEvil);
+    gEngine.Textures.unloadTexture(this.kBack);
+
+    if(this.mRestart){
+        var myGame = new MyGame();
+        gEngine.Core.startScene(myGame,true);
+    }
+    
 };

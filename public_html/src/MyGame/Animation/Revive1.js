@@ -15,6 +15,8 @@ function Revive1(nowMission) {
     this.isTime = true;
 
     this.Mission = nowMission;
+    
+    this.mRestart = false;
 }
 gEngine.Core.inheritPrototype(Revive1, Scene);
 
@@ -79,18 +81,10 @@ Revive1.prototype.update = function () {
 
     this.mRevive1.updateAnimation();
 
-    var that = this.Mission;
     if(this.isTime){
         this.isTime = false;
-        setTimeout(function(){
-            if(that===1){
-                var myGame = new MyGame();
-                gEngine.Core.initializeEngineCore('GLCanvas', myGame);
-            }else if(that===2){
-                var myGame = new MyGame2();
-                gEngine.Core.initializeEngineCore('GLCanvas', myGame);
-            }
-        }, 500);
+        var that = this;   
+        setTimeout(function(){timeup(that)}, 500);
 
     };
 };
@@ -98,6 +92,17 @@ Revive1.prototype.update = function () {
 Revive1.prototype.unloadScene = function() {
     gEngine.Textures.unloadTexture(this.kRevive1);
     gEngine.Textures.unloadTexture(this.kBack);
+    
+    if(this.mRestart){
+        var that = this.Mission;
+        if(that===1){
+                var myGame = new MyGame();
+                gEngine.Core.startScene(myGame,true);
+            }else if(that===2){
+                var myGame = new MyGame2();
+                gEngine.Core.startScene(myGame,true);
+            }
+    }
 };
 
 Revive1.prototype.loadScene = function () {

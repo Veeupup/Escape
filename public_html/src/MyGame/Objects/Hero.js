@@ -45,10 +45,10 @@ Hero.prototype.update = function () {
     var yform=this.getXform().getYPos();
     GameObject.prototype.update.call(this);
     
-    if(yform>=6&&yform<=20){
+    if(yform>=0&&yform<=20){
         this.floor=0;
     }
-    else if(yform>=27&&yform<=37){
+    else if(yform>=22&&yform<=37){
         this.floor=1;
     }
     else if(yform>=40&&yform<=56){

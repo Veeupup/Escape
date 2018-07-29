@@ -89,7 +89,7 @@ MyGame2.prototype._initialTrap = function(){
         m = this._initialItem(this.kTrap, 5, 2.2, 5, this.mheightorginal, this.kLight);
         this.mtrap.push(m);
         
-        m = this._initialItem(this.kTrap, 20, 22.4, 5, this.mheightorginal, this.kLight);
+        m = this._initialItem(this.kTrap, -35, 22.4, 5, this.mheightorginal, this.kLight);
         this.mtrap.push(m);
         
         m = this._initialItem(this.kTrap, 65, 22.4, 5, this.mheightorginal, this.kLight);

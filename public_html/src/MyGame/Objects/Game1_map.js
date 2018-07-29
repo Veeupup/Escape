@@ -31,6 +31,7 @@ MyGame.prototype._initialAll = function(){
 
     //游戏道具
     this.mGun = this._initialItem( this.kGun, 10, -50, 5, 6, this.kLight);
+    this.mGun1 = this._initialItem( this.kGun1, 10, -50, 5, 6, this.kLight);   
     this.mNet = this._initialItem( this.kNet, 10, -50, 5, 6, this.kLight);
     this.mLargeSight = this._initialItem(this.kLargeSight, 10, -50, 5, 6, this.kLight);
     this.mbullet = this._initialItem( this.kbullet, 20, -50, 3, 3, this.kLight);
@@ -87,7 +88,7 @@ MyGame.prototype._initialMinion = function(){
 
 MyGame.prototype._initialTrap = function(){
         var m = null;
-        m = this._initialItem(this.kTrap, 5, 2.2, 5, this.mheightorginal, this.kLight);
+        m = this._initialItem(this.kTrap, 12, 2.2, 5, this.mheightorginal, this.kLight);
         this.mtrap.push(m);
         
         m = this._initialItem(this.kTrap, 20, 22.4, 5, this.mheightorginal, this.kLight);

@@ -10,8 +10,8 @@ MyGame2.prototype.CrashIntoMonster = function(){
             (xhero - this.mMonster[i].getXform().getXPos())<=5&&
             (yhero - this.mMonster[i].getXform().getYPos())>=-8&&
             (yhero - this.mMonster[i].getXform().getYPos())<=8&&(this.isMoving=== true)){
-            var myGame = new Revive(2);
-            gEngine.Core.initializeEngineCore('GLCanvas', myGame);
+            this.mRestart = true;
+            gEngine.GameLoop.stop();
         }
     }
 };
@@ -25,8 +25,8 @@ MyGame2.prototype.CrashIntoTrap = function(){
         var trapy = this.mtrap[i].mXform.mPosition[1];
         if(this.mtrap[i].mXform.mScale[1] > 1){
             if((xhero - trapx) <= 4 && (xhero - trapx) >= -4 && (yhero - trapy) >= 0 && (yhero - trapy) <= 6){
-                var myGame = new Revive(2);
-                gEngine.Core.initializeEngineCore('GLCanvas', myGame);
+                this.mRestart = true;
+                gEngine.GameLoop.stop();
             }
         }
     }
