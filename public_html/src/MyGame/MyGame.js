@@ -220,7 +220,7 @@ MyGame.prototype.initialize = function () {
         5,          //near
         5,          //inner
         30,          //outer
-        2,          //intensity
+        1,          //intensity
         0.5,
     );
     this.kLight.mFar = 20;
@@ -234,7 +234,7 @@ MyGame.prototype.initialize = function () {
     this._initialAll();
     this._initialTrap();
 
-    this.mHero = new Hero(this.kMinionSprite, this.kLight, -5, 5);
+    this.mHero = new Hero(this.kMinionSprite, this.kLight, -5, 5, 5, 8);
 
     this.mAllObjs = new GameObjectSet();
     this.mAllParticles = new ParticleGameObjectSet();
@@ -433,7 +433,7 @@ MyGame.prototype.update = function () {
         {
             case 0:
             if(this.isMoving){
-                if((xNow>-7)&&(xNow<-1)&&this.isChest0===false){
+                if((xNow>-10)&&(xNow<0)&&this.isChest0===false){
                     var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
                     var yHero = this.mHero.mRenderComponent.mXform.mPosition[1];
                     this.mNet.mXform.mPosition[0] = xHero + 20;

@@ -10,7 +10,7 @@
 /* find out more about jslint: http://www.jslint.com/help.html */
 
 "use strict";  // Operate in Strict mode such that variables must be declared before used!
-function Hero(spriteTexture , light, x, y) {
+function Hero(spriteTexture , light, x, y, width, height) {
     this.floor = -1;
     this.kDelta = 0.3;
     this.xdminnow=0;
@@ -23,6 +23,8 @@ function Hero(spriteTexture , light, x, y) {
     this.yamaxnow=128-32;
     this.dflag=0;
     this.aflag=0;
+    this.r = null;
+    this.mlive = 3;
     this.mDye = null;
     this.mDye = new LightRenderable(spriteTexture);
     this.mDye.setColor([1, 1, 1, 0]);
@@ -33,8 +35,13 @@ function Hero(spriteTexture , light, x, y) {
         
     GameObject.call(this, this.mDye);
     
-    var r = new RigidRectangle(this.getXform(), 5, 8);
-    this.setRigidBody(r);
+    if(width === null && height === null){
+        this.r = new RigidRectangle(this.getXform(), 5, 8);
+    }else{
+        this.r = new RigidRectangle(this.getXform(), width, height);
+    }
+   
+    this.setRigidBody(this.r);
     this.toggleDrawRenderable();
     this.toggleDrawRigidShape();
 }
@@ -45,7 +52,7 @@ Hero.prototype.update = function () {
     var yform=this.getXform().getYPos();
     GameObject.prototype.update.call(this);
     
-    if(yform>=0&&yform<=20){
+    if(yform>=3&&yform<=20){
         this.floor=0;
     }
     else if(yform>=22&&yform<=37){

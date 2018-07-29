@@ -3,6 +3,7 @@
 function Win( nowMission) {
     // The camera to view the scene
     this.kBack = "assets/back.png";
+    this.kWin = "assets/sounds/win.mp3";
     this.mCamera = null;
     this.mMsg = null;
     this.mBack = null;
@@ -22,6 +23,8 @@ Win.prototype.initialize = function () {
         2
     );
 
+     gEngine.AudioClips.playBackgroundAudio(this.kWin);
+
     this.kLight = this._createALight(
         0,          //type
         [-5,10,0],  //position
@@ -39,12 +42,12 @@ Win.prototype.initialize = function () {
     this.mMsg0 = new FontRenderable("Congratulations! You win! winner winner!");
     this.mMsg0.setColor([1, 0, 0, 1]);
     this.mMsg0.getXform().setPosition(10, 20);
-    this.mMsg0.setTextHeight(4);
+    this.mMsg0.setTextHeight(16);
     
     this.mMsg1 = new FontRenderable("Press Space to to back to the Start Scene");
     this.mMsg1.setColor([1, 0, 0, 1]);
     this.mMsg1.getXform().setPosition(10, 40);
-    this.mMsg1.setTextHeight(4);
+    this.mMsg1.setTextHeight(8  );
 
     this.mBack = new LightRenderable(this.kBack);
     this.mBack.setColor([1, 1, 1, 0]);  // No tinting
@@ -68,17 +71,21 @@ Win.prototype.draw = function () {
 Win.prototype.update = function () {
     // select which character to work with
     if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space)){
-        var myGame = new Start();s
-        gEngine.Core.initializeEngineCore('GLCanvas', myGame);
+        gEngine.GameLoop.stop();
     }
 };
 
 Win.prototype.unloadScene = function() {
     gEngine.Textures.unloadTexture(this.kBack);
+    gEngine.AudioClips.unloadAudio(this.kWin);
+    
+    var myGame = new Start();
+    gEngine.Core.startScene(myGame);
 };
 
 Win.prototype.loadScene = function () {
     gEngine.Textures.loadTexture(this.kBack);
+    gEngine.AudioClips.loadAudio(this.kWin);
 };
 
 Win.prototype._createALight = function (type, pos, dir, color, n, f, inner, outer, intensity, dropOff) {

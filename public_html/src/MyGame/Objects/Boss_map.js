@@ -6,11 +6,10 @@
 "use strict";
 
 Boss.prototype._initialItem = function( texture, x, y, width, height, light){ 
-    var item = new TextureRenderable(texture);
+    var item = new LightRenderable(texture);
 
     item.getXform().setPosition( x , y);
     item.getXform().setSize( width, height);
-
+    item.addLight(light);
     return item;
 };
-

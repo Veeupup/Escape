@@ -64,9 +64,9 @@ Boss.prototype.createBounds = function() {
     for (x = 100; x < 200; x+=20) 
         this.platformAt(x, y, w, 0, 12);
 
-    y = 0;
-    for (x = -200; x < 0; x+=20) 
-        this.platformAt(x, y, w, 0, 12);
+//    y = 0;
+//    for (x = -200; x < 0; x+=20) 
+//        this.platformAt(x, y, w, 0, 12);
 
     x = -500;
     for (y = -242; y < 242; y+=12) 

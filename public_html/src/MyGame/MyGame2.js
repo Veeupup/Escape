@@ -210,7 +210,7 @@ MyGame2.prototype.initialize = function () {
         5,          //near
         5,          //inner
         30,          //outer
-        2,          //intensity
+        1,          //intensity
         1,
     );
 
@@ -224,7 +224,7 @@ MyGame2.prototype.initialize = function () {
     this._initialAll();
     this._initialTrap();
 
-    this.mHero = new Hero(this.kMinionSprite, this.kLight , -10, 70);
+    this.mHero = new Hero(this.kMinionSprite, this.kLight , -10, 70, 5, 8);
 
     this.mAllObjs = new GameObjectSet();
     this.mAllParticles = new ParticleGameObjectSet();

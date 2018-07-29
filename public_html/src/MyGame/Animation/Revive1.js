@@ -101,6 +101,9 @@ Revive1.prototype.unloadScene = function() {
             }else if(that===2){
                 var myGame = new MyGame2();
                 gEngine.Core.startScene(myGame,true);
+            }else if(that===3){
+                var myGame = new Boss();
+                gEngine.Core.startScene(myGame,true);
             }
     }
 };
