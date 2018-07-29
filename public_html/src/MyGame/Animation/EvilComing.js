@@ -26,12 +26,13 @@ EvilComing.prototype.initialize = function () {
         [0, 0, 1280, 720],         // viewport (orgX, orgY, width, height)
         2
     );
+    this.mCamera.setBackgroundColor([0,0,0,1]);
 
     this.kLight = this._createALight(
         0,          //type
         [-5,10,0],  //position
         [0,0,0],    //direction
-        [1,1,1,1],  //color
+        [0,0,0,1],  //color
         30,         //far
         5,          //near
         5,          //inner
@@ -44,33 +45,14 @@ EvilComing.prototype.initialize = function () {
     this.mEvil = new LightRenderable(this.kEvil);
     this.mEvil.setColor([1, 1, 1, 0]);  
     this.mEvil.getXform().setPosition(5, 20);
-    this.mEvil.getXform().setSize(290, 120);
-    this.mEvil.setSpriteSequence(1024,0,409,341,5,0);
+    this.mEvil.getXform().setSize(190, 157);
+    this.mEvil.setSpriteSequence(1024,0,409,341,4,0);
     this.mEvil.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
     this.mEvil.setAnimationSpeed(10);
     this.mEvil.addLight(this.kLight);
-    
-    this.mEvil1 = new LightRenderable(this.kEvil);
-    this.mEvil1.setColor([1, 1, 1, 0]);  
-    this.mEvil1.getXform().setPosition(5, 20);
-    this.mEvil1.getXform().setSize(290, 120);
-    this.mEvil1.setSpriteSequence(683,0,409,341,5,0);
-    this.mEvil1.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
-    this.mEvil1.setAnimationSpeed(10);
-    this.mEvil1.addLight(this.kLight);''
-    
-    this.mEvil2 = new LightRenderable(this.kEvil);
-    this.mEvil2.setColor([1, 1, 1, 0]);  
-    this.mEvil2.getXform().setPosition(5, 20);
-    this.mEvil2.getXform().setSize(290, 120);
-    this.mEvil2.setSpriteSequence(341,0,409,341,5,0);
-    this.mEvil2.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
-    this.mEvil2.setAnimationSpeed(10);
-    this.mEvil2.addLight(this.kLight);
+    gEngine.DefaultResources.setGlobalAmbientIntensity(4);
     
     GameObject.call(this, this.mEvil);
-    GameObject.call(this, this.mEvil1);
-    GameObject.call(this, this.mEvil2);
 };
 // This is the draw function, make sure to setup proper drawing environment, and more
 // importantly, make sure to _NOT_ change any state.
@@ -79,8 +61,7 @@ EvilComing.prototype.draw = function () {
     this.mCamera.setupViewProjection();
    
     this.mEvil.draw(this.mCamera);
-//    this.mEvil1.draw(this.mCamera);
-    this.mEvil2.draw(this.mCamera);
+
 };
 
 // The Update function, updates the application state. Make sure to _NOT_ draw
@@ -94,15 +75,13 @@ EvilComing.prototype.update = function () {
      GameObject.prototype.update.call(this);
     // remember to update this.mMinion's animation
     this.mEvil.updateAnimation();
-    this.mEvil1.updateAnimation();
-    this.mEvil2.updateAnimation();
-    
+
     if(this.isTime){
         this.isTime = false;
         setTimeout(function(){ 
-            var myGame = new MyGame();
+            var myGame = new EvilComing1();
             gEngine.Core.initializeEngineCore('GLCanvas', myGame);
-        }, 1500);
+        }, 500);
         
     };
 };

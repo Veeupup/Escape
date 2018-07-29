@@ -1,24 +1,24 @@
 "use strict";  // Operate in Strict mode such that variables must be declared before used!
 
-function Revive(nowMission) {
+function EvilComing2( nowMission) {
     // The camera to view the scene
-    this.kRevive = "assets/Revive.png";
+    this.kEvil = "assets/EvilComing.png";
     this.kBack = "assets/back.png";
     this.mCamera = null;
     this.mMsg = null;
-    this.mRevive = null;
-    this.mRevive1 = null;
-    this.mRevive2 = null;
+    this.mEvil = null;
+    this.mEvil1 = null;
+    this.mEvil2 = null;
     this.mBack = null;
     this.kLight = null;
-    
+
     this.isTime = true;
 
-    this.Mission = nowMission;
+    this.nowMission = nowMission;
 }
-gEngine.Core.inheritPrototype(Revive, Scene);
+gEngine.Core.inheritPrototype(EvilComing2, Scene);
 
-Revive.prototype.initialize = function () {
+EvilComing2.prototype.initialize = function () {
     // Step A: set up the cameras
     this.mCamera = new Camera(
         vec2.fromValues(50, 50), // position of the camera
@@ -26,13 +26,13 @@ Revive.prototype.initialize = function () {
         [0, 0, 1280, 720],         // viewport (orgX, orgY, width, height)
         2
     );
-    this.mCamera.setBackgroundColor([0,0,0,0.5]);
+    this.mCamera.setBackgroundColor([0,0,0,1]);
 
     this.kLight = this._createALight(
         0,          //type
         [-5,10,0],  //position
         [0,0,0],    //direction
-        [1,1,1,1],  //color
+        [0,0,0,1],  //color
         30,         //far
         5,          //near
         5,          //inner
@@ -42,63 +42,63 @@ Revive.prototype.initialize = function () {
     );
     this.kLight.mFar = 300;
 
-    this.mRevive = new LightRenderable(this.kRevive);
-    this.mRevive.setColor([1, 1, 1, 0]);
-    this.mRevive.getXform().setPosition(5, 20);
-    this.mRevive.getXform().setSize(96, 120);
-    this.mRevive.setSpriteSequence(1024,0,409,512,5,0);
-    this.mRevive.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
-    this.mRevive.setAnimationSpeed(10);
-    this.mRevive.addLight(this.kLight);
-    gEngine.DefaultResources.setGlobalAmbientIntensity(1);
-    
-    GameObject.call(this, this.mRevive);
+    this.mEvil2 = new LightRenderable(this.kEvil);
+    this.mEvil2.setColor([1, 1, 1, 0]);
+    this.mEvil2.getXform().setPosition(5, 20);
+    this.mEvil2.getXform().setSize(190, 157);
+    this.mEvil2.setSpriteSequence(341,0,409,341,5,0);
+    this.mEvil2.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
+    this.mEvil2.setAnimationSpeed(10);
+    this.mEvil2.addLight(this.kLight);
+    gEngine.DefaultResources.setGlobalAmbientIntensity(4);
 
+    // GameObject.call(this, this.mEvil);
+    // GameObject.call(this, this.mEvil1);
+    GameObject.call(this, this.mEvil2);
 };
 // This is the draw function, make sure to setup proper drawing environment, and more
 // importantly, make sure to _NOT_ change any state.
-Revive.prototype.draw = function () {
+EvilComing2.prototype.draw = function () {
     // Step A: clear the canvas
     this.mCamera.setupViewProjection();
-   
-    this.mRevive.draw(this.mCamera);
 
+    this.mEvil2.draw(this.mCamera);
 };
 
 // The Update function, updates the application state. Make sure to _NOT_ draw
 // anything from this function!
-Revive.prototype.update = function () {
+EvilComing2.prototype.update = function () {
     // select which character to work with
 //    if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space)){
 //        var myGame = new MyGame();
 //        gEngine.Core.initializeEngineCore('GLCanvas', myGame);
 //    };
-     GameObject.prototype.update.call(this);
+    GameObject.prototype.update.call(this);
     // remember to update this.mMinion's animation
-    this.mRevive.updateAnimation();
 
-    var that = this.Mission;
+    this.mEvil2.updateAnimation();
+
     if(this.isTime){
         this.isTime = false;
-        setTimeout(function(){ 
-            var myGame = new Revive1(that);
+        setTimeout(function(){
+            var myGame = new MyGame();
             gEngine.Core.initializeEngineCore('GLCanvas', myGame);
         }, 500);
-        
+
     };
 };
 
-Revive.prototype.unloadScene = function() {
-    gEngine.Textures.unloadTexture(this.kRevive);
+EvilComing2.prototype.unloadScene = function() {
+    gEngine.Textures.unloadTexture(this.kEvil);
     gEngine.Textures.unloadTexture(this.kBack);
 };
 
-Revive.prototype.loadScene = function () {
-    gEngine.Textures.loadTexture(this.kRevive);
+EvilComing2.prototype.loadScene = function () {
+    gEngine.Textures.loadTexture(this.kEvil);
     gEngine.Textures.loadTexture(this.kBack);
 };
 
-Revive.prototype._createALight = function (type, pos, dir, color, n, f, inner, outer, intensity, dropOff) {
+EvilComing2.prototype._createALight = function (type, pos, dir, color, n, f, inner, outer, intensity, dropOff) {
     var light = new Light();
     light.setLightType(type);
     light.setColor(color);

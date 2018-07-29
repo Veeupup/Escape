@@ -16,6 +16,23 @@ MyGame.prototype.CrashIntoMonster = function(){
     }
 };
 
+MyGame.prototype.CrashIntoTrap = function(){
+    var xhero = this.mHero.getXform().getXPos();
+    var yhero = this.mHero.getXform().getYPos();
+    var i;
+    for(i = 0;i < this.mtrap.length ; i++){
+        var trapx = this.mtrap[i].mXform.mPosition[0];
+        var trapy = this.mtrap[i].mXform.mPosition[1];
+        if(this.mtrap[i].mXform.mScale[1] > 1){
+            if((xhero - trapx) <= 4 && (xhero - trapx) >= -4 && (yhero - trapy) >= 0 && (yhero - trapy) <= 6){
+                var myGame = new Revive(1);
+                gEngine.Core.initializeEngineCore('GLCanvas', myGame);
+            }
+        }
+    }
+};
+
+
 MyGame.prototype.chase=function(){
     var xhero = this.mHero.getXform().getXPos();
     var yhero = this.mHero.getXform().getYPos();

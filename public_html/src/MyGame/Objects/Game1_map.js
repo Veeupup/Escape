@@ -85,3 +85,20 @@ MyGame.prototype._initialMinion = function(){
         this.mMonster.push(m);
 };
 
+MyGame.prototype._initialTrap = function(){
+        var m = null;
+        m = this._initialItem(this.kTrap, 5, 2.2, 5, this.mheightorginal, this.kLight);
+        this.mtrap.push(m);
+        
+        m = this._initialItem(this.kTrap, 20, 22.4, 5, this.mheightorginal, this.kLight);
+        this.mtrap.push(m);
+        
+        m = this._initialItem(this.kTrap, 65, 22.4, 5, this.mheightorginal, this.kLight);
+        this.mtrap.push(m);
+        
+        m = this._initialItem(this.kTrap, 40, 42.8, 5, this.mheightorginal, this.kLight);
+        this.mtrap.push(m);
+        
+        m = this._initialItem(this.kTrap, -25, 42.8, 5, this.mheightorginal, this.kLight);
+        this.mtrap.push(m);
+};
