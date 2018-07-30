@@ -235,7 +235,7 @@ MyGame2.prototype.showChest = function(){
                 break;
             case 1:
                 
-                    if((xNow>this.keyPosition[0][0]-5)&&(xNow<this.keyPosition[0][0]+5)&&this.iskey===false){
+                    if((xNow>this.keyPosition[0][0]-5)&&(xNow<this.keyPosition[0][0]+5)&&this.iskey===false&&this.keyrandom===0){
                         this.mRedTip.mXform.mPosition[0] = this.keyPosition[0][0];
                         this.mRedTip.mXform.mPosition[1] = this.keyPosition[0][1]+5;
                     }else if((xNow>this.chestPosition[0][0]-5)&&(xNow<this.chestPosition[0][0]+5)&&this.isChest1===false&&this.chestrandom===0){
@@ -251,14 +251,14 @@ MyGame2.prototype.showChest = function(){
                 break;
             case 2:
                 
-                    if((xNow>this.keyPosition[2][0]-5)&&(xNow<this.keyPosition[2][0]+5)&&this.iskey===false){
+                    if((xNow>this.keyPosition[2][0]-5)&&(xNow<this.keyPosition[2][0]+5)&&this.iskey===false&&this.keyrandom===2){
                         this.mRedTip.mXform.mPosition[0] = this.keyPosition[2][0];
                         this.mRedTip.mXform.mPosition[1] = this.keyPosition[2][1]+5;
-                    }else if((xNow>this.keyPosition[1][0]-5)&&(xNow<this.keyPosition[1][0]+5)&&this.iskey===false){
+                    }else if((xNow>this.keyPosition[1][0]-5)&&(xNow<this.keyPosition[1][0]+5)&&this.iskey===false&&this.keyrandom===1){
                         this.mRedTip.mXform.mPosition[0] = this.keyPosition[1][0];
                         this.mRedTip.mXform.mPosition[1] = this.keyPosition[1][1]+5;
                     }else if((xNow>this.chestPosition[1][0]-5)&&(xNow<this.chestPosition[1][0]+5)&&this.isChest1===false&&this.chestrandom===1){
-                        this.mRedTip.mXform.mPosition[0] = this.chestPositiond[1][0];
+                        this.mRedTip.mXform.mPosition[0] = this.chestPosition[1][0];
                         this.mRedTip.mXform.mPosition[1] = this.chestPosition[1][1]+5;
                     }else if((xNow>this.chestPosition[2][0]-5)&&(xNow<this.chestPosition[2][0]+5)&&this.isChest1===false&&this.chestrandom===2){
                         this.mRedTip.mXform.mPosition[0] = this.chestPosition[2][0];

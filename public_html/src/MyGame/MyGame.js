@@ -460,7 +460,7 @@ MyGame.prototype.update = function () {
                 break;
             case 1:
                 if(this.isMoving){
-                    if((xNow>this.keyPosition[0][0]-5)&&(xNow<this.keyPosition[0][0]+5)&&this.iskey===false){
+                    if((xNow>this.keyPosition[0][0]-5)&&(xNow<this.keyPosition[0][0]+5)&&this.iskey===false&&this.keyrandom===0){
                         var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
                         var yHero = this.mHero.mRenderComponent.mXform.mPosition[1];
                         this.mkey.mXform.mPosition[0] = xHero + 20;
@@ -501,7 +501,7 @@ MyGame.prototype.update = function () {
                 break;
             case 2:
                 if(this.isMoving){
-                    if((xNow>this.keyPosition[2][0]-5)&&(xNow<this.keyPosition[2][0]+5)&&this.iskey===false){
+                    if((xNow>this.keyPosition[2][0]-5)&&(xNow<this.keyPosition[2][0]+5)&&this.iskey===false&&this.keyrandom===2){
                         var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
                         var yHero = this.mHero.mRenderComponent.mXform.mPosition[1];
                         this.mkey.mXform.mPosition[0] = xHero + 20;
@@ -511,7 +511,7 @@ MyGame.prototype.update = function () {
                         this.mMsg.mText = "   You got the key! ";
                         this.isMoving = false;
                         this.iskey=true;
-                    }else if((xNow>this.keyPosition[1][0]-5)&&(xNow<this.keyPosition[1][0]+5)&&this.iskey===false){
+                    }else if((xNow>this.keyPosition[1][0]-5)&&(xNow<this.keyPosition[1][0]+5)&&this.iskey===false&&this.keyrandom===1){
                         var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
                         var yHero = this.mHero.mRenderComponent.mXform.mPosition[1];
                         this.mkey.mXform.mPosition[0] = xHero + 20;
