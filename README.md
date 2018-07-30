@@ -2,6 +2,8 @@
 
 Utilizing NUS's  [Kelvin Sung](https://github.com/Apress/build-your-own-2d-game-engine/tree/master/V2-EngineWithPhysics%2BParticles/DemoWithPhysics%2BParticle)'s 2D game physics engine, based on web-gl, it is a 2D horizontal version of the game.
 
+You can play it online [Escape](https://veeupup.github.io/Escape/public_html/)
+
 ## Operate
 
 * W : jump
@@ -13,5 +15,5 @@ Utilizing NUS's  [Kelvin Sung](https://github.com/Apress/build-your-own-2d-game-
 
 ### Now
 
- It is still developing now, and it is only developed for 3 days,  so there are many bugs here. If you like the game , it's our pleasure to accept your suggestions.
+ It is still developing now, and it is only developed for less than 10 days,  so there are some bugs here. If you like the game , it's our pleasure to accept your suggestions.
 
