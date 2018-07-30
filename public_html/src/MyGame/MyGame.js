@@ -199,14 +199,14 @@ MyGame.prototype.unloadScene = function () {
 MyGame.prototype.initialize = function () {
     // Step A: set up the cameras
     this.mCamera = new Camera(
-        vec2.fromValues(50, 0), // position of t                                                                                                       ``                                                                                                                                                                                                                                                                                                                                          he camera
+        vec2.fromValues(-5, 10), // position of t                                                                                                       ``                                                                                                                                                                                                                                                                                                                                          he camera
         100,                     // width of camera
         [0, 0, 1024, 484]         // viewport (orgX, orgY, width, height)
     );
    
     
     this.mCamerasmall = new Camera(
-        vec2.fromValues(50, 45), // position of t                                                                                                       ``                                                                                                                                                                                                                                                                                                                                          he camera
+        vec2.fromValues(-5, 10), // position of t                                                                                                       ``                                                                                                                                                                                                                                                                                                                                          he camera
         200,                     // width of camera
         [0, 390, 204, 96]         // viewport (orgX, orgY, width, height)
         );
@@ -234,7 +234,7 @@ MyGame.prototype.initialize = function () {
     this._initialAll();
     this._initialTrap();
 
-    this.mHero = new Hero(this.kMinionSprite, this.kLight, -5, 5, 5, 8);
+    this.mHero = new Hero(this.kMinionSprite, this.kLight, -5, 10, 5, 8);
 
     this.mAllObjs = new GameObjectSet();
     this.mAllParticles = new ParticleGameObjectSet();

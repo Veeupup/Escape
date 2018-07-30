@@ -115,7 +115,7 @@ EvilComing2.prototype.unloadScene = function() {
     gEngine.Textures.unloadTexture(this.kBack);
 
     if(this.mRestart){
-        var myGame = new MyGame();
+        var myGame = new Boss();
         gEngine.Core.startScene(myGame,true);
     }
     

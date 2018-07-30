@@ -189,7 +189,7 @@ MyGame2.prototype.unloadScene = function () {
 MyGame2.prototype.initialize = function () {
     // Step A: set up the cameras
     this.mCamera = new Camera(
-        vec2.fromValues(50, 0), // position of t                                                                                                       ``                                                                                                                                                                                                                                                                                                                                          he camera
+        vec2.fromValues(-10, 70), // position of t                                                                                                       ``                                                                                                                                                                                                                                                                                                                                          he camera
         100,                     // width of camera
         [0, 0, 1024, 484]         // viewport (orgX, orgY, width, height)
     );
@@ -203,7 +203,7 @@ MyGame2.prototype.initialize = function () {
 
     this.kLight = this._createALight(
         0,          //type
-        [-5,10,0],  //position
+        [-10,70,0],  //position
         [0,0,0],    //direction
         [1,1,1,0.5],  //color
         30,         //far

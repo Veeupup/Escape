@@ -35,7 +35,7 @@ Boss.prototype.platformAt = function (x, y, w, rot, h, texture) {
     if(texture ==null){
         var p = new TextureRenderable(this.kPlatform);
     }else{
-         var p = new TextureRenderable(this.kPlatform);
+         var p = new LightRenderable(this.kPlatform);
     }  
     var xf = p.getXform();
     
@@ -64,9 +64,9 @@ Boss.prototype.createBounds = function() {
     for (x = 100; x < 200; x+=20) 
         this.platformAt(x, y, w, 0, 12);
 
-//    y = 0;
-//    for (x = -200; x < 0; x+=20) 
-//        this.platformAt(x, y, w, 0, 12);
+    y = 240;
+    for (x = -512; x < 512; x+=20) 
+        this.platformAt(x, y, w, 0, 12);
 
     x = -500;
     for (y = -242; y < 242; y+=12) 

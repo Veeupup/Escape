@@ -198,7 +198,11 @@ Boss.prototype.update = function () {
     
     this.bulletjudge();
         if (gEngine.Input.isKeyPressed(gEngine.Input.keys.W)) {
-            this.mHero.mRenderComponent.mXform.incYPosBy(3);
+            if(this.mHero.mRenderComponent.mXform.getYPos()<150){
+                 this.mHero.mRenderComponent.mXform.incYPosBy(2);
+            }else{
+                this.mHero.mRenderComponent.mXform.incYPosBy(-2);
+            }
     }
     if (gEngine.Input.isKeyPressed(gEngine.Input.keys.S)) {
             this.mHero.mRenderComponent.mXform.incYPosBy(-3);
