@@ -26,6 +26,7 @@ function MyGame2() {
     this.kMinion = "assets/shadow01.png";
     this.kNet = "assets/net.png";
     this.kGun = "assets/gun.png";
+    this.kGun1 = "assets/Gun1.png";
     this.kbullet = "assets/bullet.png";
     this.kNetTrack = "assets/track.png";
     this.kRip = "assets/rip.png";
@@ -34,6 +35,7 @@ function MyGame2() {
     this.kChest = "assets/chest.png";
     this.kLargeSight = "assets/LargeSight.png";
     this.kTrap = "assets/trap.png";
+    this.kRedTip = "assets/redtip.png";
 
     //light
     this.kLight = null;
@@ -41,6 +43,7 @@ function MyGame2() {
     //music
     this.kBgClip = "assets/sounds/BGClip.mp3";
     this.kfindzombie = "assets/sounds/findzombie.wav";
+    this.kPistol = "assets/sounds/pistol.wav";
 
     // The camera to view the scene
     this.mCamera = null;
@@ -61,6 +64,7 @@ function MyGame2() {
     this.mchest = null;
     this.mchest1 = null;
     this.mchest3 = null;
+    this.mRedTip = null;
 
 
     //map items
@@ -70,6 +74,7 @@ function MyGame2() {
 
     this.mNet = null;
     this.mGun = null;
+    this.mGun1 = null;
     this.mgunstate = false;
     this.mbullet = null;
     this.mbulletmovespeedflag = 0;
@@ -92,7 +97,7 @@ function MyGame2() {
     this.isChest1 = false
     this.isChest3 = false;
     this.isNet = 0;
-    this.isGun = 0;
+    this.isGun = 8;
     this.isNetTrackSet = false;
     //陷阱的移动判定
     this.isUp = true;
@@ -147,9 +152,12 @@ MyGame2.prototype.loadScene = function () {
     gEngine.Textures.loadTexture(this.kSide);
     gEngine.Textures.loadTexture(this.kLargeSight); 
     gEngine.Textures.loadTexture(this.kTrap);
+    gEngine.Textures.loadTexture(this.kRedTip);    
+    gEngine.Textures.loadTexture(this.kGun1);    
     //music
     gEngine.AudioClips.loadAudio(this.kBgClip);
     gEngine.AudioClips.loadAudio(this.kfindzombie);
+    gEngine.AudioClips.loadAudio(this.kPistol);
 };
 
 MyGame2.prototype.unloadScene = function () {
@@ -172,10 +180,13 @@ MyGame2.prototype.unloadScene = function () {
     gEngine.Textures.unloadTexture(this.kSide);
     gEngine.Textures.unloadTexture(this.kLargeSight);  
     gEngine.Textures.unloadTexture(this.kTrap);
+    gEngine.Textures.unloadTexture(this.kRedTip); 
+    gEngine.Textures.unloadTexture(this.kGun1);   
     //unload music
     gEngine.Textures.unloadTexture(this.kNetTrack);
     gEngine.AudioClips.unloadAudio(this.kBgClip);
     gEngine.AudioClips.unloadAudio(this.kfindzombie);
+    gEngine.AudioClips.unloadAudio(this.kPistol);
 
     if(this.mRestart){
         var mygame = new Revive(2);
@@ -264,7 +275,9 @@ MyGame2.prototype.draw = function () {
     this.mBack.draw(this.mCamera);
     this.mchest.draw(this.mCamera);
     this.mchest1.draw(this.mCamera);
-    this.mchest3.draw(this.mCamera); 
+    this.mchest3.draw(this.mCamera);
+    this.mGun1.draw(this.mCamera);
+    this.mRedTip.draw(this.mCamera);
     this.mbullet.draw(this.mCamera);
     this.mNetTrack.draw(this.mCamera);
     this.mDoor.draw(this.mCamera);
@@ -314,7 +327,7 @@ MyGame2.prototype.updateState = function(){
     }
     //update the item's position
     if(this.iskey){
-        this.mkey.mXform.mPosition[0] = xHero + -3;
+        this.mkey.mXform.mPosition[0] = xHero - 9;
         this.mkey.mXform.mPosition[1] = yHero + 12;
     }
     if(this.isChest0){
@@ -325,6 +338,10 @@ MyGame2.prototype.updateState = function(){
     if(this.isGun){
         this.mGun.mXform.mPosition[0] = xHero + 9;
         this.mGun.mXform.mPosition[1] = yHero + 12;
+         if(this.mgunstate === true && this.mbulletflag === 1){
+            this.mGun1.mXform.mPosition[0] = xHero + 9;
+            this.mGun1.mXform.mPosition[1] = yHero + 12;               
+        }
     }
     if(this.isChest3){
         this.mLargeSight.mXform.mPosition[0] = xHero + -6;
@@ -352,6 +369,7 @@ MyGame2.prototype.update = function () {
 
     // movving
     this.updateState();
+    this.showChest();
     this.CrashIntoMonster();
     this.CrashIntoTrap();
      this.MoveTrap();
@@ -382,14 +400,16 @@ MyGame2.prototype.update = function () {
     }
 
     if (gEngine.Input.isKeyClicked(gEngine.Input.keys.L)) {
-        //console.log(this.isNet);
         if(this.isGun){
-            this.bulletmove();
+            if(this.mgunstate === false){
+            gEngine.AudioClips.playACue(this.kPistol);
+            this.bulletmove();              
             this.isGun -= 1;
             if(this.isGun===0){
                 this.mGun.mXform.mPosition[0] = -40;
                 this.mGun.mXform.mPosition[1] = -40;
                 this.isChest1 = true;
+            }  
             }
         }
         this.mgunstate = true;

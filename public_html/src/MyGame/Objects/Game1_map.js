@@ -28,6 +28,9 @@ MyGame.prototype._initialAll = function(){
     var xchest3 = this.chest3Position[this.chest3random][0];
     var ychest3 = this.chest3Position[this.chest3random][1];
     this.mchest3 = this._initialItem( this.kChest, xchest3, ychest3, 5, 6, this.kLight);
+    
+    //道具提示
+    this.mRedTip = this._initialItem(this.kRedTip, -100, -100, 3, 4, this.kLight);
 
     //游戏道具
     this.mGun = this._initialItem( this.kGun, 10, -50, 5, 6, this.kLight);

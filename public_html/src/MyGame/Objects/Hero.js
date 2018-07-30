@@ -36,7 +36,7 @@ function Hero(spriteTexture , light, x, y, width, height) {
     GameObject.call(this, this.mDye);
     
     if(width === null && height === null){
-        this.r = new RigidRectangle(this.getXform(), 5, 8);
+        this.r = new RigidRectangle(this.getXform(), 4, 8);
     }else{
         this.r = new RigidRectangle(this.getXform(), width, height);
     }

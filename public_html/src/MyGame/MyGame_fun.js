@@ -64,7 +64,7 @@ MyGame.prototype.elevatoraction = function (elevator,ylow,yhigh,istop,iselevator
     var ele1_x = ele1.mRenderComponent.mXform.mPosition[0];
     var yHero = this.mHero.mRenderComponent.mXform.mPosition[1];
     var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
-    if(((ele1_h - yHero) > 2)&&((ele1_h - yHero) < 5)&&((ele1_x -xHero) > -7)&&((ele1_x - xHero) < 7)&&(istop === true)){
+    if(((ele1_h - yHero) > 2)&&((ele1_h - yHero) < 5)&&((ele1_x -xHero) > -6)&&((ele1_x - xHero) < 6)&&(istop === true)){
         iselevatorcrash = true;
     }
     for(var i = 0 ; i < this.mMonster.length ; i++ ){
@@ -220,7 +220,80 @@ else if(this.mbulletflag === 1)
 
 }
 if(this.mgunstate === false){
-    this.mGun1.mXform.mPosition[0] = 10;
-    this.mGun1.mXform.mPosition[1] = -50;
+    this.mGun1.mXform.mPosition[0] = -100;
+    this.mGun1.mXform.mPosition[1] = -500;
     }
+};
+
+MyGame.prototype.showChest = function(){
+        var hero = this.mHero;
+        var floor = hero.floor;
+        var xNow = hero.mRenderComponent.mXform.mPosition[0];
+
+        switch(floor)
+        {
+            case 0:
+                if((xNow>-10)&&(xNow<0)&&this.isChest0===false){
+                    this.mRedTip.mXform.mPosition[0] = -5;
+                    this.mRedTip.mXform.mPosition[1] = 12;
+                }else{
+                    this.mRedTip.mXform.mPosition[0] = -500;
+                    this.mRedTip.mXform.mPosition[1] = -500;
+                }
+                break;
+            case 1:
+                
+                    if((xNow>this.keyPosition[0][0]-5)&&(xNow<this.keyPosition[0][0]+5)&&this.iskey===false){
+                        this.mRedTip.mXform.mPosition[0] = this.keyPosition[0][0];
+                        this.mRedTip.mXform.mPosition[1] = this.keyPosition[0][1]+5;
+                    }else if((xNow>this.chestPosition[0][0]-5)&&(xNow<this.chestPosition[0][0]+5)&&this.isChest1===false&&this.chestrandom===0){
+                        this.mRedTip.mXform.mPosition[0] = this.chestPosition[0][0];
+                        this.mRedTip.mXform.mPosition[1] = this.chestPosition[0][1]+5;
+                    }else if((xNow>this.chest3Position[0][0]-5)&&(xNow<this.chest3Position[0][0]+5)&&this.isChest3===false&&(this.chest3random === 0)){
+                        this.mRedTip.mXform.mPosition[0] = this.chest3Position[0][0];
+                        this.mRedTip.mXform.mPosition[1] = this.chest3Position[0][1]+5;
+                    }else{
+                        this.mRedTip.mXform.mPosition[0] = -500;
+                        this.mRedTip.mXform.mPosition[1] = -500;
+                    }
+                break;
+            case 2:
+                
+                    if((xNow>this.keyPosition[2][0]-5)&&(xNow<this.keyPosition[2][0]+5)&&this.iskey===false){
+                        this.mRedTip.mXform.mPosition[0] = this.keyPosition[2][0];
+                        this.mRedTip.mXform.mPosition[1] = this.keyPosition[2][1]+5;
+                    }else if((xNow>this.keyPosition[1][0]-5)&&(xNow<this.keyPosition[1][0]+5)&&this.iskey===false){
+                        this.mRedTip.mXform.mPosition[0] = this.keyPosition[1][0];
+                        this.mRedTip.mXform.mPosition[1] = this.keyPosition[1][1]+5;
+                    }else if((xNow>this.chestPosition[1][0]-5)&&(xNow<this.chestPosition[1][0]+5)&&this.isChest1===false&&this.chestrandom===1){
+                        this.mRedTip.mXform.mPosition[0] = this.chestPositiond[1][0];
+                        this.mRedTip.mXform.mPosition[1] = this.chestPosition[1][1]+5;
+                    }else if((xNow>this.chestPosition[2][0]-5)&&(xNow<this.chestPosition[2][0]+5)&&this.isChest1===false&&this.chestrandom===2){
+                        this.mRedTip.mXform.mPosition[0] = this.chestPosition[2][0];
+                        this.mRedTip.mXform.mPosition[1] = this.chestPosition[2][1]+5;
+                    }else if((xNow>this.chest3Position[1][0]-5)&&(xNow<this.chest3Position[1][0]+5)&&this.isChest3===false&&(this.chest3random === 1)){
+                        this.mRedTip.mXform.mPosition[0] = this.chest3Position[1][0];
+                        this.mRedTip.mXform.mPosition[1] = this.chest3Position[1][1]+5;
+                    }else if((xNow>this.chest3Position[2][0]-5)&&(xNow<this.chest3Position[2][0]+5)&&this.isChest3===false&&(this.chest3random === 2)){
+                        this.mRedTip.mXform.mPosition[0] = this.chest3Position[2][0];
+                        this.mRedTip.mXform.mPosition[1] = this.chest3Position[2][1]+5;
+                    }else{
+                        this.mRedTip.mXform.mPosition[0] = -500;
+                        this.mRedTip.mXform.mPosition[1] = -500;
+                    }
+                break;
+                
+            case 3:
+                    if(this.iskey===true){
+                        if((xNow>-34)&&(xNow<-26)){
+                        
+                        }
+                    }else if(this.iskey === false){
+                        if((xNow<-34)&&(xNow>-26)){
+                            
+                        } 
+                    };
+                
+                break;    
+        }
 };

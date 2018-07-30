@@ -35,6 +35,7 @@ function MyGame() {
     this.kChest = "assets/chest.png";
     this.kLargeSight = "assets/LargeSight.png";
     this.kTrap = "assets/trap.png";
+    this.kRedTip = "assets/redtip.png";
     
     //restart and pass
     this.mRestart = false;
@@ -45,6 +46,7 @@ function MyGame() {
     //music
     this.kBgClip = "assets/sounds/BGClip.mp3";
     this.kfindzombie = "assets/sounds/findzombie.wav";
+    this.kPistol = "assets/sounds/pistol.wav";
     
     // The camera to view the scene
     this.mCamera = null;
@@ -63,8 +65,7 @@ function MyGame() {
     this.mchest = null;
     this.mchest1 = null;
     this.mchest3 = null;
-
-    
+    this.mRedTip = null;
 
     //map items
     this.mHero = null;
@@ -90,6 +91,7 @@ function MyGame() {
     this.mCurrentObj = 0;
     this.mTarget = null;
     
+    
     //游戏状态的检测
     this.isMoving = true;
     this.iskey = false;
@@ -97,7 +99,7 @@ function MyGame() {
     this.isChest1 = false;
     this.isChest3 = false;
     this.isNet = 0;
-    this.isGun = 0;
+    this.isGun = 8 ;
     this.isNetTrackSet = false;
     this.mdirection = 0;
     this.isOnElevator = false;
@@ -156,10 +158,11 @@ MyGame.prototype.loadScene = function () {
     gEngine.Textures.loadTexture(this.kSide);  
     gEngine.Textures.loadTexture(this.kLargeSight); 
     gEngine.Textures.loadTexture(this.kTrap);
-
+    gEngine.Textures.loadTexture(this.kRedTip);
     //音乐加载
     gEngine.AudioClips.loadAudio(this.kBgClip);
     gEngine.AudioClips.loadAudio(this.kfindzombie);
+    gEngine.AudioClips.loadAudio(this.kPistol);
 };
 
 MyGame.prototype.unloadScene = function () {
@@ -184,9 +187,11 @@ MyGame.prototype.unloadScene = function () {
     gEngine.Textures.unloadTexture(this.kSide);    
     gEngine.Textures.unloadTexture(this.kLargeSight);  
     gEngine.Textures.unloadTexture(this.kTrap);
+    gEngine.Textures.unloadTexture(this.kRedTip);  
+    
     gEngine.AudioClips.unloadAudio(this.kBgClip);
     gEngine.AudioClips.unloadAudio(this.kfindzombie);
-    
+    gEngine.AudioClips.unloadAudio(this.kPistol);    
    if(this.mRestart){
        var mygame = new Revive(1);
        gEngine.Core.startScene(mygame,true);
@@ -228,7 +233,7 @@ MyGame.prototype.initialize = function () {
 
     // sets the background to gray
     gEngine.AudioClips.playBackgroundAudio(this.kBgClip);
-    gEngine.DefaultResources.setGlobalAmbientIntensity(0);
+    gEngine.DefaultResources.setGlobalAmbientIntensity(5);
     
     //back initial
     this._initialAll();
@@ -269,7 +274,8 @@ MyGame.prototype.draw = function () {
     this.mBack.draw(this.mCamera);
     this.mchest.draw(this.mCamera);
     this.mchest1.draw(this.mCamera); 
-    this.mchest3.draw(this.mCamera); 
+    this.mchest3.draw(this.mCamera);
+    this.mRedTip.draw(this.mCamera);
     this.mbullet.draw(this.mCamera);
     this.mNetTrack.draw(this.mCamera);
     this.mDoor.draw(this.mCamera);
@@ -294,6 +300,7 @@ MyGame.prototype.draw = function () {
     }
     this.mpaper.draw(this.mCamera);
     this.mMsg.draw(this.mCamera); 
+    
 };
 
 MyGame.prototype.increasShapeSize = function(obj, delta) {
@@ -325,7 +332,7 @@ MyGame.prototype.updateState = function(){
     }
     //update the item's position
     if(this.iskey){
-        this.mkey.mXform.mPosition[0] = xHero -3;
+        this.mkey.mXform.mPosition[0] = xHero - 9;
         this.mkey.mXform.mPosition[1] = yHero + 12;
     }
     if(this.isChest0){       
@@ -341,7 +348,7 @@ MyGame.prototype.updateState = function(){
         }
     }
     if(this.isChest3){
-        this.mLargeSight.mXform.mPosition[0] = xHero + -6;
+        this.mLargeSight.mXform.mPosition[0] = xHero - 3;
         this.mLargeSight.mXform.mPosition[1] = yHero + 12;
     }
     
@@ -366,6 +373,7 @@ MyGame.prototype.update = function () {
     
     // 
     this.updateState();
+    this.showChest();
     this.CrashIntoMonster();
     this.CrashIntoTrap();
     this.MoveTrap();
@@ -396,6 +404,7 @@ MyGame.prototype.update = function () {
     if (gEngine.Input.isKeyClicked(gEngine.Input.keys.L)) {
         if(this.isGun){
             if(this.mgunstate === false){
+            gEngine.AudioClips.playACue(this.kPistol);
             this.bulletmove();              
             this.isGun -= 1;
             if(this.isGun===0){
