@@ -494,7 +494,7 @@ MyGame2.prototype.update = function () {
                         this.mMsg.mText = "You have gotten the pistol";
                         this.isMoving = !this.isMoving;
                         this.isChest1 = true;
-                        this.isGun = 3;
+                        this.isGun = 5;
                     };
                     if((xNow>this.chest3Position[0][0]-5)&&(xNow<this.chest3Position[0][0]+5)&&this.isChest3===false&&(this.chest3random === 0)){
                          var xHero = this.mHero.mRenderComponent.mXform.mPosition[0];
