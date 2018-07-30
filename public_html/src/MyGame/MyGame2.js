@@ -204,7 +204,7 @@ MyGame2.prototype.initialize = function () {
         100,                     // width of camera
         [0, 0, 1024, 484]         // viewport (orgX, orgY, width, height)
     );
-
+    this.mCamera.setBackgroundColor([0,0,0,1]);
 
     this.mCamerasmall = new Camera(
         vec2.fromValues(50, 45), // position of t                                                                                                       ``                                                                                                                                                                                                                                                                                                                                          he camera

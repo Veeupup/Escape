@@ -96,7 +96,7 @@ Revive1.prototype.unloadScene = function() {
     if(this.mRestart){
         var that = this.Mission;
         if(that===1){
-                var myGame = new MyGame();
+                var myGame = new MyGame(8);
                 gEngine.Core.startScene(myGame,true);
             }else if(that===2){
                 var myGame = new MyGame2();

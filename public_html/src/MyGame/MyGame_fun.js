@@ -297,3 +297,22 @@ MyGame.prototype.showChest = function(){
                 break;    
         }
 };
+
+MyGame.prototype.talk1fun = function (xhero,yhero) {
+    if(this.talk1i === 0){
+        this.mMsg.mText=this.talk1[this.talk1i];
+        this.isMoving = false;
+        this.talk1i++;
+        this.isDialog = true;
+    }
+    else if(gEngine.Input.isKeyClicked(gEngine.Input.keys.Space) && this.isDialog === true){
+            this.mMsg.mText=this.talk1[this.talk1i];
+            this.talk1i++;
+            this.isDialog = true;
+    }
+    if (this.talk1i > 7){
+        this.isMoving = true;
+        this.isDialog = false;
+    }
+
+};

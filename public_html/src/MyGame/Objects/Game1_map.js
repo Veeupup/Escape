@@ -44,6 +44,23 @@ MyGame.prototype._initialAll = function(){
 
 };
 
+
+MyGame.prototype._initialWitch = function (texture,light) {
+    var Witch = new LightRenderable(texture);
+    Witch.getXform().setPosition(-10,65);
+    Witch.getXform().setSize(5,8);
+    Witch.setSpriteSequence(256,0 ,      // first element pixel position: top-left 512 is top of image, 0 is left of image
+        43, 64,   // widthxheight in pixels
+        3,          // number of elements in this sequence
+        0);         // horizontal padding in between
+    Witch.setAnimationType(SpriteAnimateRenderable.eAnimationType.eAnimateSwing);
+    Witch.setAnimationSpeed(30);
+    Witch.addLight(light);
+
+    return Witch;
+};
+
+
 MyGame.prototype._initialItem = function( texture, x, y, width, height, light){ 
     var item = new LightRenderable(texture);
 
