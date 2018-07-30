@@ -32,7 +32,7 @@ function Hero(spriteTexture , light, x, y, width, height) {
     this.mDye.getXform().setSize(5, 8);
     this.mDye.setElementPixelPositions(21.5,43,128-32,128);
     this.mDye.addLight(light);
-        
+    this.isatland = 0;
     GameObject.call(this, this.mDye);
     
     if(width === null && height === null){
@@ -51,6 +51,7 @@ Hero.prototype.update = function () {
     var xform=this.getXform().getXPos();
     var yform=this.getXform().getYPos();
     GameObject.prototype.update.call(this);
+    
     
     if(yform>=3&&yform<=20){
         this.floor=0;

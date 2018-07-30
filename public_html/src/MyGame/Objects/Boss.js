@@ -24,11 +24,9 @@ function Boss() {
     this.kBoss = "assets/boss.png";
     this.kBloodpic = "assets/blood.png";
     this.kBGM = "assets/sounds/bgm.mp3";
-    this.kPistol = "assets/sounds/pistol.wav";
     this.kLight = null;
     this.mAllObjs = null;
     this.mdirection = 0;
-    this.mPistol = null;
     
     this.mCollisionInfos = [];
 
@@ -77,7 +75,6 @@ Boss.prototype.loadScene = function () {
     gEngine.Textures.loadTexture(this.kBoss);
     gEngine.Textures.loadTexture(this.kBloodpic);
     gEngine.AudioClips.loadAudio(this.kBGM);
-    gEngine.AudioClips.loadAudio(this.kPistol);   
 };
 
 
@@ -93,7 +90,7 @@ Boss.prototype.unloadScene = function() {
     gEngine.Textures.unloadTexture(this.kBoss);
     gEngine.Textures.unloadTexture(this.kBloodpic);
     gEngine.AudioClips.unloadAudio(this.kBGM);
-    gEngine.AudioClips.unloadAudio(this.kPistol);     
+    
     if(this.mRestart){
         var mygamelose = new Revive(3);
         gEngine.Core.startScene(mygamelose);
@@ -231,9 +228,8 @@ Boss.prototype.update = function () {
     
     if (gEngine.Input.isKeyClicked(gEngine.Input.keys.L)) {
             if(this.mgunstate === false){
-                gEngine.AudioClips.playACue(this.kPistol);
-                this.mgunstate = true;
-                this.bulletmove();
+        this.mgunstate = true;
+            this.bulletmove();
             }
     }
     
@@ -320,7 +316,7 @@ Boss.prototype.Laser = function () {
 
 };
 Boss.prototype.Jump = function(){
-    var speed = 12 ;
+    var speed = 10;
     if(this.isJump === true){
             if(this.mHero.mRenderComponent.mXform.getYPos()<150 && this.isAirFlag <= speed){
                 this.mHero.mRenderComponent.mXform.incYPosBy(+15);

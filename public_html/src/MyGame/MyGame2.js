@@ -442,6 +442,7 @@ MyGame2.prototype.update = function () {
                if(this.isMoving){
                     if(this.iskey===true){
                         if((xNow>135)&&(xNow<145)){
+                            gEngine.AudioClips.playBackgroundAudio(this.kBgClip);
                             gEngine.GameLoop.stop();
                     }
                     }else if(this.iskey === false){

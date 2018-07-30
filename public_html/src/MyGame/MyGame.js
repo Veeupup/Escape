@@ -576,6 +576,7 @@ MyGame.prototype.update = function () {
                     if(this.iskey===true){
                         if((xNow>-34)&&(xNow<-26)){
                         this.mMsg.mText = "You passed this part!!";
+                        gEngine.AudioClips.stopBackgroundAudio(this.kBgClip);
                         gEngine.GameLoop.stop();
                     }
                     }else if(this.iskey === false){

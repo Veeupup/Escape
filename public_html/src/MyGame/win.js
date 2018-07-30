@@ -17,10 +17,10 @@ gEngine.Core.inheritPrototype(Win, Scene);
 Win.prototype.initialize = function () {
     // Step A: set up the cameras
     this.mCamera = new Camera(
-        vec2.fromValues(50, 50), // position of the camera
-        300,                        // width of camera
-        [0, 0, 1280, 720],         // viewport (orgX, orgY, width, height)
-        2
+        vec2.fromValues(0, 0), // position of the camera
+        1024,                        // width of camera
+        [0, 0, 1024, 484],         // viewport (orgX, orgY, width, height)
+        0
     );
 
      gEngine.AudioClips.playBackgroundAudio(this.kWin);
@@ -41,18 +41,18 @@ Win.prototype.initialize = function () {
     
     this.mMsg0 = new FontRenderable("Congratulations! You win! winner winner!");
     this.mMsg0.setColor([1, 0, 0, 1]);
-    this.mMsg0.getXform().setPosition(10, 20);
-    this.mMsg0.setTextHeight(16);
+    this.mMsg0.getXform().setPosition(-80, 80);
+    this.mMsg0.setTextHeight(24);
     
     this.mMsg1 = new FontRenderable("Press Space to to back to the Start Scene");
     this.mMsg1.setColor([1, 0, 0, 1]);
-    this.mMsg1.getXform().setPosition(10, 40);
-    this.mMsg1.setTextHeight(8  );
+    this.mMsg1.getXform().setPosition(-80, -40);
+    this.mMsg1.setTextHeight(16);
 
     this.mBack = new LightRenderable(this.kBack);
     this.mBack.setColor([1, 1, 1, 0]);  // No tinting
-    this.mBack.getXform().setPosition(-5, 20);
-    this.mBack.getXform().setSize(290, 120);
+    this.mBack.getXform().setPosition(0, 0);
+    this.mBack.getXform().setSize(1024, 484);
     this.mBack.addLight(this.kLight);
 };
 
@@ -71,6 +71,7 @@ Win.prototype.draw = function () {
 Win.prototype.update = function () {
     // select which character to work with
     if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space)){
+        gEngine.AudioClips.stopBackgroundAudio(this.kWin);
         gEngine.GameLoop.stop();
     }
 };
@@ -78,7 +79,7 @@ Win.prototype.update = function () {
 Win.prototype.unloadScene = function() {
     gEngine.Textures.unloadTexture(this.kBack);
     gEngine.AudioClips.unloadAudio(this.kWin);
-    
+
     var myGame = new Start();
     gEngine.Core.startScene(myGame);
 };

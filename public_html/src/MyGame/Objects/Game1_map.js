@@ -5,7 +5,7 @@ MyGame.prototype._initialAll = function(){
     this.mBack = this._initialItem( this.kBackGround, 50, 40, 200, 100, this.kLight);
     this.mDoor = this._initialItem( this.kDoor, -32, 7, 8, 10, this.kLight);
     this.mDoor1 = this._initialItem( this.kDoor, -30, 67, 8, 10, this.kLight);
-    
+   
     //key的初始化
     switch(this.keyrandom){
         case 0 :

@@ -14,6 +14,7 @@
 function Start() {
     // The camera to view the scene
     this.kBack = "assets/start.png";
+    this.kBGM = "assets/sounds/startscene.mp3";
     this.mCamera = null;
     this.mMsg = null;
     this.mBack = null;
@@ -43,6 +44,7 @@ Start.prototype.initialize = function () {
         1,          //intensity
         0.5,
     );
+    gEngine.AudioClips.playBackgroundAudio(this.kBGM);
     
     this.mBack = new LightRenderable(this.kBack);
     this.mBack.setColor([1, 1, 1, 0]);  // No tinting
@@ -82,4 +84,5 @@ Start.prototype.unloadScene = function() {
 
 Start.prototype.loadScene = function () {
     gEngine.Textures.loadTexture(this.kBack);
+    gEngine.AudioClips.loadAudio(this.kBGM);
 };

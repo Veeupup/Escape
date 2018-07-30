@@ -18,32 +18,35 @@ Boss.prototype.bulletmove = function(){
 };
 
 Boss.prototype.bulletjudge = function(){
-    if(this.mgunstate === true)
+if(this.mgunstate === true)
+{
+    if(this.mbulletmovespeedflag!==0)
     {
-        if(this.mbulletmovespeedflag!==0)
+        this.mbulletmovespeedflag++;
+        if(this.mbulletmovespeedflag === 3)
         {
-            this.mbulletmovespeedflag++;
-            if(this.mbulletmovespeedflag === 3)
-            {
-                this.mbulletmovespeedflag=0;
-            }
+            this.mbulletmovespeedflag=0;
         }
-        else if(this.mbulletflag === 1)
-        {
-            if(this.mbulletdirection === 1){
-                this.mbullet.mXform.mPosition[0] += 15;
-                this.mbulletmovespeedflag++;
-            }
-            else if(this.mbulletdirection === -1){
-                this.mbullet.mXform.mPosition[0] -= 15;
-                this.mbulletmovespeedflag++;
-            }
-        }
-    this.BulletCrashInto(); 
     }
-    if(this.mgunstate === false){
-        this.mGun1.mXform.mPosition[0] = -518;
-        this.mGun1.mXform.mPosition[1] = -518;
+    else if(this.mbulletflag === 1)
+    {
+        if(this.mbulletdirection === 1){
+            this.mbullet.mXform.mPosition[0] += 15;
+            this.mbulletmovespeedflag++;
+        }
+        else if(this.mbulletdirection === -1){
+            this.mbullet.mXform.mPosition[0] -= 15;
+            this.mbulletmovespeedflag++;
+        }
+    }
+
+
+    this.BulletCrashInto(); 
+
+}
+if(this.mgunstate === false){
+    this.mGun1.mXform.mPosition[0] = -518;
+    this.mGun1.mXform.mPosition[1] = -518;
     }
 };
 
@@ -87,7 +90,7 @@ Boss.prototype.LaserintoHero = function () {
     var yLaser= this.mLaser.getXform().getYPos();
 
 
-   if ((xLaser-xhero)<=62.5&&(xLaser-xhero)>=-10 && (yLaser - yhero) >=-38 && (yLaser - yhero) <= 38){
+   if ((xLaser-xhero)<=62.5&&(xLaser-xhero)>=-40 && (yLaser - yhero) >=-38 && (yLaser - yhero) <= 38){
        this.mLaser.getXform().setXPos(-600);
        this.mRestart = true;
         gEngine.GameLoop.stop();
