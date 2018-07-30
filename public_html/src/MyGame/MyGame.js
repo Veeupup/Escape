@@ -91,7 +91,6 @@ function MyGame() {
     this.mCurrentObj = 0;
     this.mTarget = null;
     
-    
     //游戏状态的检测
     this.isMoving = true;
     this.iskey = false;
@@ -99,7 +98,7 @@ function MyGame() {
     this.isChest1 = false;
     this.isChest3 = false;
     this.isNet = 0;
-    this.isGun = 8 ;
+    this.isGun = 0;
     this.isNetTrackSet = false;
     this.mdirection = 0;
     this.isOnElevator = false;
@@ -233,7 +232,7 @@ MyGame.prototype.initialize = function () {
 
     // sets the background to gray
     gEngine.AudioClips.playBackgroundAudio(this.kBgClip);
-    gEngine.DefaultResources.setGlobalAmbientIntensity(5);
+    gEngine.DefaultResources.setGlobalAmbientIntensity(0);
     
     //back initial
     this._initialAll();

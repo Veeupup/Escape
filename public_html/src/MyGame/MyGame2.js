@@ -97,7 +97,7 @@ function MyGame2() {
     this.isChest1 = false
     this.isChest3 = false;
     this.isNet = 0;
-    this.isGun = 8;
+    this.isGun = 0;
     this.isNetTrackSet = false;
     //陷阱的移动判定
     this.isUp = true;
