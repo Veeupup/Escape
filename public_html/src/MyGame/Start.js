@@ -18,22 +18,37 @@ function Start() {
     this.mMsg = null;
     this.mBack = null;
     this.mRestart = false;
+    this.mChoice = 0;
 }
 gEngine.Core.inheritPrototype(Start, Scene);
 
 Start.prototype.initialize = function () {
     // Step A: set up the cameras
     this.mCamera = new Camera(
-        vec2.fromValues(50, 50), // position of the camera
-        300,                        // width of camera
-        [0, 0, 1280, 720],         // viewport (orgX, orgY, width, height)
-        2
+        vec2.fromValues(0, 0), // position of the camera
+        1024,                        // width of camera
+        [0, 0, 1024, 484],         // viewport (orgX, orgY, width, height)
+        0
     );
     
-    this.mBack = new SpriteRenderable(this.kBack);
+    this.Light = createALight(
+        0,          //type
+        [-5,10,0],  //position
+        [0,0,0],    //direction
+        [1,1,1,0.5],  //color
+        1500,         //far
+        1500,          //near
+        5,          //inner
+        30,          //outer
+        1,          //intensity
+        0.5,
+    );
+    
+    this.mBack = new LightRenderable(this.kBack);
     this.mBack.setColor([1, 1, 1, 0]);  // No tinting
-    this.mBack.getXform().setPosition(-5, 20);
-    this.mBack.getXform().setSize(290, 120);
+    this.mBack.getXform().setPosition(0, 0);
+    this.mBack.getXform().setSize(1024, 484);
+    this.mBack.addLight(this.Light);
 };
 
 // This is the draw function, make sure to setup proper drawing environment, and more
@@ -52,17 +67,17 @@ Start.prototype.draw = function () {
 Start.prototype.update = function () {
     // select which character to work with
     if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space)){
-        this.mRestart = true;
         gEngine.GameLoop.stop();
     }
+
+
 };
 
 Start.prototype.unloadScene = function() {
     gEngine.Textures.unloadTexture(this.kBack);
-    if(this.mRestart){
-        var mygame = new EvilComing();
+        var mygame = new Help();
         gEngine.Core.startScene(mygame,true);
-    }
+  
 };
 
 Start.prototype.loadScene = function () {
